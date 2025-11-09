@@ -6,7 +6,7 @@ Todo list
 
 1. Add a script that checks the current map and then boots to main menu if the map is locked. ✓
 2. Lock weapons behind checks inside of the vscript or something ✓
-3. any traps
+3. any traps (Wip)
 
 
 
@@ -38,3 +38,4 @@ After you have installed Sourcemod and Metamod into your Left 4 Dead 2 installat
 6. The Vpk file goes here SteamLibrary\steamapps\common\Left 4 Dead 2\left4dead2\addons 
 
 7. Finally, you can put your client file wherever. Just make sure you know your slot name and your archipelago.gg:(numbers) before you use it.
+
