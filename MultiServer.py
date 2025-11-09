@@ -1781,6 +1781,25 @@ def get_slot_points(ctx: Context, team: int, slot: int) -> int:
 
 
 async def process_client_cmd(ctx: Context, client: Client, args: dict):
+    # Diagnostic guard: if args isn't a dict, log and drop it so the server doesn't crash.
+    # This is temporary and can be removed after we capture the offending payload(s).
+    if not isinstance(args, dict):
+        try:
+            addr = getattr(client.socket, "remote_address", None)
+            addr_str = f"{addr[0]}:{addr[1]}" if addr else repr(client)
+        except Exception:
+            addr_str = repr(client)
+        try:
+            with open("bad_payloads.log", "a", encoding="utf-8") as _l:
+                _l.write(f"{time.time()} FROM {addr_str} CLIENT={client}: {repr(args)}\n")
+        except Exception:
+            # best-effort logging to stdout if file write fails
+            try:
+                print(f"BAD_PAYLOAD {time.time()} FROM {addr_str} CLIENT={client}: {repr(args)}")
+            except Exception:
+                pass
+        return
+
     try:
         cmd: str = args["cmd"]
     except:
