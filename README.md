@@ -28,5 +28,8 @@ After you have installed Sourcemod and Metamod into your Left 4 Dead 2 installat
 
 7. Finally, you can put your client file wherever. Just make sure you know your slot name and your archipelago.gg:(numbers) before you use it.
 
+# For testing the Public Build, be aware that you are required to play in the Archipelago mutation, otherwise, scripts will not run and you will be playing Vanilla.
+
+
 
 
