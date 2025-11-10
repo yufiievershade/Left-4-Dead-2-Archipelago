@@ -2,6 +2,8 @@
 
 The Current Build is expected to have many bugs. Just in case I don't get the things I want down with traps, how weapons spawn, etc. Know that I probably know if a trap doesn't send at the moment. Weapon spawns are also high priority right now. They work, but can be varied with how they decide to spawn. Everything else should work(in theory). I've done thorough testing with each build with friends. More will be done before I feel satisfied with the state of the apworld. For now, opening it up to more eyes is giving me more access to potential problems that I might not know about.
 
+Finally, I recommend testing it by itself without other games until Filler is added. Most of the filler right now is just duplicates of guns. It might not generate with other games because of the limited item amount
+
 # Installing Left 4 Dead 2 Archipelago
 
 Please have the latest build of sourcemod and metamod installed for Left 4 Dead 2.
@@ -25,5 +27,6 @@ After you have installed Sourcemod and Metamod into your Left 4 Dead 2 installat
 6. The Vpk file goes here SteamLibrary\steamapps\common\Left 4 Dead 2\left4dead2\addons 
 
 7. Finally, you can put your client file wherever. Just make sure you know your slot name and your archipelago.gg:(numbers) before you use it.
+
 
 
