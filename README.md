@@ -1,19 +1,6 @@
 # Left 4 Dead 2 Archipelago WIP
 
-Client works?
-
-Todo list
-
-1. Add a script that checks the current map and then boots to main menu if the map is locked. ✓
-2. Lock weapons behind checks inside of the vscript or something ✓
-3. any traps (Wip)
-
-
-
-
-
-
-
+The Current Build is expected to have many bugs. Just in case I don't get the things I want down with traps, how weapons spawn, etc. Know that I probably know if a trap doesn't send at the moment. Weapon spawns are also high priority right now. They work, but can be varied with how they decide to spawn. Everything else should work(in theory). I've done thorough testing with each build with friends. More will be done before I feel satisfied with the state of the apworld. For now, opening it up to more eyes is giving me more access to potential problems that I might not know about.
 
 # Installing Left 4 Dead 2 Archipelago
 
@@ -38,4 +25,5 @@ After you have installed Sourcemod and Metamod into your Left 4 Dead 2 installat
 6. The Vpk file goes here SteamLibrary\steamapps\common\Left 4 Dead 2\left4dead2\addons 
 
 7. Finally, you can put your client file wherever. Just make sure you know your slot name and your archipelago.gg:(numbers) before you use it.
+
 
