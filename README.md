@@ -4,6 +4,9 @@ The Current Build is expected to have many bugs. Just in case I don't get the th
 
 Finally, I recommend testing it by itself without other games until Filler is added. Most of the filler right now is just duplicates of guns. It might not generate with other games because of the limited item amount
 
+
+# All things related to traps are not currently implemented fully. So for now, skip the steps with Zombie Spawn and Left4dhooks.
+
 # Installing Left 4 Dead 2 Archipelago
 
 Please have the latest build of sourcemod and metamod installed for Left 4 Dead 2.
@@ -16,8 +19,6 @@ Metamod: https://www.sourcemm.net/downloads.php?branch=stable
 Zombie Spawn(for traps): https://forums.alliedmods.net/showthread.php?p=2745733 
 
 Left4dHooks(also for traps.): https://forums.alliedmods.net/showthread.php?t=321696 
-
-# All things related to traps are not currently implemented fully. So for now, skip the steps with Zombie Spawn and Left4dhooks.
 
 After you have installed Sourcemod and Metamod into your Left 4 Dead 2 installation, be sure to download everything from the releases page and sort them into the following locations.
 1. All sp files go into your SteamLibrary\steamapps\common\Left 4 Dead 2\left4dead2\addons\sourcemod\scripting folder
@@ -39,6 +40,7 @@ After you have installed Sourcemod and Metamod into your Left 4 Dead 2 installat
 9. Finally, you can put your client file wherever. Just make sure you know your slot name and your archipelago.gg:(numbers) before you use it.
 
 # For testing the Public Build, be aware that you are required to play in the Archipelago mutation, otherwise, scripts will not run and you will be playing Vanilla. Not only this, but be sure to run your launch options on -insecure if you want to test this
+
 
 
 
