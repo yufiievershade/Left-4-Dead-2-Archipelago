@@ -43,6 +43,7 @@ After you have installed Sourcemod and Metamod into your Left 4 Dead 2 installat
 
 
 
+Any trouble you have with installation or anything otherwise, feel free to reach out to me on Bluesky, Discord, or Twitch @YufiiEvershade
 
 
 
