@@ -17,6 +17,8 @@ Zombie Spawn(for traps): https://forums.alliedmods.net/showthread.php?p=2745733
 
 Left4dHooks(also for traps.): https://forums.alliedmods.net/showthread.php?t=321696 
 
+For installing all of these things above, please refer to their instructions for installation.
+
 After you have installed Sourcemod and Metamod into your Left 4 Dead 2 installation, be sure to download everything from the releases page and sort them into the following locations.
 1. All smx files go into your SteamLibrary\steamapps\common\Left 4 Dead 2\left4dead2\addons\sourcemod\plugins folder
 
@@ -39,6 +41,7 @@ After you have installed Sourcemod and Metamod into your Left 4 Dead 2 installat
 
 
 Any trouble you have with installation or anything otherwise, feel free to reach out to me on Bluesky, Discord, or Twitch @YufiiEvershade
+
 
 
 
