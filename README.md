@@ -34,13 +34,16 @@ After you have installed all of the things above, be sure to download everything
 
 7. Your Left4dhooks zip contains a sourcemod folder inside of it. Drag and drop this folder into your addons folder and it will just overwrite your sourcemod folder with the new files only) 
 
-8. Finally, you can put your client file wherever. Just make sure you know your slot name and your archipelago.gg:(numbers) before you use it.
+8. There is a cfg file in the zip. it goes in your SteamLibrary\steamapps\common\Left 4 Dead 2\left4dead2\cfg\sourcemod folder after you install the previous things
+
+9. Finally, you can put your client file wherever. Just make sure you know your slot name and your archipelago.gg:(numbers) before you use it.
 
 # For testing the Public Build, be aware that you are required to play in the Archipelago mutation, otherwise, scripts will not run and you will be playing Vanilla. Not only this, but be sure to run your launch options on -insecure if you want to test this
 
 
 
 Any trouble you have with installation or anything otherwise, feel free to reach out to me on Bluesky, Discord, or Twitch @YufiiEvershade
+
 
 
 
