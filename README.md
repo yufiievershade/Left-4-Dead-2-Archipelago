@@ -4,6 +4,8 @@ The Current Build is expected to have many bugs. Just in case I don't get the th
 
 Finally, I recommend testing it by itself without other games until Filler is added. Most of the filler right now is just duplicates of guns. It might not generate with other games because of the limited item amount
 
+https://www.youtube.com/watch?v=YY40HHk8gvA (Video Tutorial for people who love visual installs like me)
+
 # Installing Left 4 Dead 2 Archipelago
 
 Please have the latest build of sourcemod and metamod installed for Left 4 Dead 2.
@@ -43,6 +45,7 @@ After you have installed all of the things above, be sure to download everything
 
 
 Any trouble you have with installation or anything otherwise, feel free to reach out to me on Bluesky, Discord, or Twitch @YufiiEvershade
+
 
 
 
