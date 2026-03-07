@@ -1,0 +1,692 @@
+Connection failed with an unhandled exception: [WinError 1225] The remote computer refused the network connection
+Traceback (most recent call last):
+  File "C:\Users\austi\ArchipelagoTest\worlds\L4D2\ThirdPartyProgramStuff\ap_companion.py", line 134, in connect_to_archipelago
+    async with websockets.connect(uri) as websocket:
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\asyncio\client.py", line 587, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\asyncio\client.py", line 541, in __await_impl__
+    self.connection = await self.create_connection()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\asyncio\client.py", line 467, in create_connection
+    _, connection = await loop.create_connection(factory, **kwargs)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 1078, in create_connection
+    raise exceptions[0]
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 1058, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 964, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\asyncio\proactor_events.py", line 722, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\asyncio\windows_events.py", line 837, in _poll
+    value = callback(transferred, key, ov)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\asyncio\windows_events.py", line 624, in finish_connect
+    ov.getresult()
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+2025-10-28 21:43:46,247 INFO: Using mod_data directory: C:\Users\austi\ArchipelagoTest\worlds\L4D2\ThirdPartyProgramStuff\mod_data
+2025-10-28 21:43:46,247 DEBUG: Using proactor: IocpProactor
+2025-10-28 21:43:46,248 INFO: Connecting to ws://localhost:38281
+2025-10-28 21:43:46,284 DEBUG: = connection is CONNECTING
+2025-10-28 21:43:46,285 DEBUG: > GET / HTTP/1.1
+2025-10-28 21:43:46,285 DEBUG: > Host: localhost:38281
+2025-10-28 21:43:46,285 DEBUG: > Upgrade: websocket
+2025-10-28 21:43:46,285 DEBUG: > Connection: Upgrade
+2025-10-28 21:43:46,285 DEBUG: > Sec-WebSocket-Key: QB1I3S9lHsLHWAxga+HOdQ==
+2025-10-28 21:43:46,285 DEBUG: > Sec-WebSocket-Version: 13
+2025-10-28 21:43:46,285 DEBUG: > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+2025-10-28 21:43:46,285 DEBUG: > User-Agent: Python/3.11 websockets/15.0.1
+2025-10-28 21:43:46,286 DEBUG: < HTTP/1.1 101 Switching Protocols
+2025-10-28 21:43:46,286 DEBUG: < Upgrade: websocket
+2025-10-28 21:43:46,286 DEBUG: < Connection: Upgrade
+2025-10-28 21:43:46,286 DEBUG: < Sec-WebSocket-Accept: c6cql/qOIoLTZI1Q7KeuTaA78pM=
+2025-10-28 21:43:46,286 DEBUG: < Sec-WebSocket-Extensions: permessage-deflate; server_max_window_bits=12; client_max_window_bits=12
+2025-10-28 21:43:46,286 DEBUG: < Date: Wed, 29 Oct 2025 01:43:46 GMT
+2025-10-28 21:43:46,286 DEBUG: < Server: Python/3.13 websockets/13.1
+2025-10-28 21:43:46,286 DEBUG: = connection is OPEN
+2025-10-28 21:43:46,286 DEBUG: < TEXT '[{"cmd":"RoomInfo","password":false,"games":["A...e":1761702226.2869196}]' [519 bytes]
+2025-10-28 21:43:46,286 INFO: Connected to localhost:38281
+2025-10-28 21:43:46,287 DEBUG: > TEXT '{"cmd": "Connect", "game": "Left 4 Dead 2", "na...": 4, "password": null}' [93 bytes]
+2025-10-28 21:43:46,287 DEBUG: Sent payload: {"cmd": "Connect", "game": "Left 4 Dead 2", "name": "MySlot", "version": 4, "password": null}
+2025-10-28 21:43:46,287 INFO: Server message cmd=RoomInfo: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702226.2869196}
+2025-10-28 21:43:46,287 DEBUG: RoomInfo received: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702226.2869196}
+2025-10-28 21:43:46,289 DEBUG: < TEXT '[{"cmd":"InvalidPacket","type":"cmd","original_...nd from cmd at `cmd`"}]' [107 bytes]
+2025-10-28 21:43:46,289 INFO: Server message cmd=InvalidPacket: {'cmd': 'InvalidPacket', 'type': 'cmd', 'original_cmd': None, 'text': 'Could not get command from cmd at `cmd`'}
+2025-10-28 21:43:46,289 DEBUG: < CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:43:46,289 DEBUG: > CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:43:46,290 DEBUG: = connection is CLOSING
+2025-10-28 21:43:46,290 DEBUG: < EOF
+2025-10-28 21:43:46,290 DEBUG: > EOF
+2025-10-28 21:43:46,290 DEBUG: = connection is CLOSED
+2025-10-28 21:43:46,290 DEBUG: x half-closing TCP connection
+2025-10-28 21:43:46,290 INFO: WebSocket closed by server
+2025-10-28 21:43:46,403 INFO: Reconnecting in 1.0 seconds...
+2025-10-28 21:43:47,417 INFO: Connecting to ws://localhost:38281
+2025-10-28 21:43:47,418 DEBUG: = connection is CONNECTING
+2025-10-28 21:43:47,419 DEBUG: > GET / HTTP/1.1
+2025-10-28 21:43:47,419 DEBUG: > Host: localhost:38281
+2025-10-28 21:43:47,419 DEBUG: > Upgrade: websocket
+2025-10-28 21:43:47,419 DEBUG: > Connection: Upgrade
+2025-10-28 21:43:47,419 DEBUG: > Sec-WebSocket-Key: MEbLLifNL7kC9w1hhQNfiw==
+2025-10-28 21:43:47,419 DEBUG: > Sec-WebSocket-Version: 13
+2025-10-28 21:43:47,419 DEBUG: > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+2025-10-28 21:43:47,419 DEBUG: > User-Agent: Python/3.11 websockets/15.0.1
+2025-10-28 21:43:47,419 DEBUG: < HTTP/1.1 101 Switching Protocols
+2025-10-28 21:43:47,419 DEBUG: < Upgrade: websocket
+2025-10-28 21:43:47,419 DEBUG: < Connection: Upgrade
+2025-10-28 21:43:47,419 DEBUG: < Sec-WebSocket-Accept: 2ImnSCCCMEZ9NqcvCAaDEMn5Bs0=
+2025-10-28 21:43:47,419 DEBUG: < Sec-WebSocket-Extensions: permessage-deflate; server_max_window_bits=12; client_max_window_bits=12
+2025-10-28 21:43:47,419 DEBUG: < Date: Wed, 29 Oct 2025 01:43:47 GMT
+2025-10-28 21:43:47,419 DEBUG: < Server: Python/3.13 websockets/13.1
+2025-10-28 21:43:47,419 DEBUG: = connection is OPEN
+2025-10-28 21:43:47,419 DEBUG: < TEXT '[{"cmd":"RoomInfo","password":false,"games":["A...e":1761702227.4201343}]' [519 bytes]
+2025-10-28 21:43:47,419 INFO: Connected to localhost:38281
+2025-10-28 21:43:47,420 DEBUG: > TEXT '{"cmd": "Connect", "game": "Left 4 Dead 2", "na...": 4, "password": null}' [93 bytes]
+2025-10-28 21:43:47,420 DEBUG: Sent payload: {"cmd": "Connect", "game": "Left 4 Dead 2", "name": "MySlot", "version": 4, "password": null}
+2025-10-28 21:43:47,420 INFO: Server message cmd=RoomInfo: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702227.4201343}
+2025-10-28 21:43:47,420 DEBUG: RoomInfo received: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702227.4201343}
+2025-10-28 21:43:47,421 DEBUG: < TEXT '[{"cmd":"InvalidPacket","type":"cmd","original_...nd from cmd at `cmd`"}]' [107 bytes]
+2025-10-28 21:43:47,421 INFO: Server message cmd=InvalidPacket: {'cmd': 'InvalidPacket', 'type': 'cmd', 'original_cmd': None, 'text': 'Could not get command from cmd at `cmd`'}
+2025-10-28 21:43:47,421 DEBUG: < CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:43:47,421 DEBUG: > CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:43:47,421 DEBUG: = connection is CLOSING
+2025-10-28 21:43:47,421 DEBUG: < EOF
+2025-10-28 21:43:47,421 DEBUG: > EOF
+2025-10-28 21:43:47,422 DEBUG: = connection is CLOSED
+2025-10-28 21:43:47,422 DEBUG: x half-closing TCP connection
+2025-10-28 21:43:47,422 INFO: WebSocket closed by server
+2025-10-28 21:43:47,525 INFO: Reconnecting in 1.5 seconds...
+2025-10-28 21:43:49,035 INFO: Connecting to ws://localhost:38281
+2025-10-28 21:43:49,036 DEBUG: = connection is CONNECTING
+2025-10-28 21:43:49,036 DEBUG: > GET / HTTP/1.1
+2025-10-28 21:43:49,036 DEBUG: > Host: localhost:38281
+2025-10-28 21:43:49,036 DEBUG: > Upgrade: websocket
+2025-10-28 21:43:49,036 DEBUG: > Connection: Upgrade
+2025-10-28 21:43:49,036 DEBUG: > Sec-WebSocket-Key: 4gb4SOnxM6xkhzXHt1Vh0A==
+2025-10-28 21:43:49,036 DEBUG: > Sec-WebSocket-Version: 13
+2025-10-28 21:43:49,036 DEBUG: > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+2025-10-28 21:43:49,036 DEBUG: > User-Agent: Python/3.11 websockets/15.0.1
+2025-10-28 21:43:49,037 DEBUG: < HTTP/1.1 101 Switching Protocols
+2025-10-28 21:43:49,037 DEBUG: < Upgrade: websocket
+2025-10-28 21:43:49,037 DEBUG: < Connection: Upgrade
+2025-10-28 21:43:49,037 DEBUG: < Sec-WebSocket-Accept: vZMQV4FO2vQt+QOXzAyGglGz2zc=
+2025-10-28 21:43:49,037 DEBUG: < Sec-WebSocket-Extensions: permessage-deflate; server_max_window_bits=12; client_max_window_bits=12
+2025-10-28 21:43:49,037 DEBUG: < Date: Wed, 29 Oct 2025 01:43:49 GMT
+2025-10-28 21:43:49,037 DEBUG: < Server: Python/3.13 websockets/13.1
+2025-10-28 21:43:49,037 DEBUG: = connection is OPEN
+2025-10-28 21:43:49,037 DEBUG: < TEXT '[{"cmd":"RoomInfo","password":false,"games":["A...e":1761702229.0382645}]' [519 bytes]
+2025-10-28 21:43:49,037 INFO: Connected to localhost:38281
+2025-10-28 21:43:49,037 DEBUG: > TEXT '{"cmd": "Connect", "game": "Left 4 Dead 2", "na...": 4, "password": null}' [93 bytes]
+2025-10-28 21:43:49,037 DEBUG: Sent payload: {"cmd": "Connect", "game": "Left 4 Dead 2", "name": "MySlot", "version": 4, "password": null}
+2025-10-28 21:43:49,039 INFO: Server message cmd=RoomInfo: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702229.0382645}
+2025-10-28 21:43:49,039 DEBUG: RoomInfo received: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702229.0382645}
+2025-10-28 21:43:49,039 DEBUG: < TEXT '[{"cmd":"InvalidPacket","type":"cmd","original_...nd from cmd at `cmd`"}]' [107 bytes]
+2025-10-28 21:43:49,039 INFO: Server message cmd=InvalidPacket: {'cmd': 'InvalidPacket', 'type': 'cmd', 'original_cmd': None, 'text': 'Could not get command from cmd at `cmd`'}
+2025-10-28 21:43:49,040 DEBUG: < CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:43:49,040 DEBUG: > CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:43:49,040 DEBUG: = connection is CLOSING
+2025-10-28 21:43:49,040 DEBUG: < EOF
+2025-10-28 21:43:49,040 DEBUG: > EOF
+2025-10-28 21:43:49,040 DEBUG: = connection is CLOSED
+2025-10-28 21:43:49,040 DEBUG: x half-closing TCP connection
+2025-10-28 21:43:49,040 INFO: WebSocket closed by server
+2025-10-28 21:43:49,143 INFO: Reconnecting in 2.2 seconds...
+2025-10-28 21:43:51,400 INFO: Connecting to ws://localhost:38281
+2025-10-28 21:43:51,401 DEBUG: = connection is CONNECTING
+2025-10-28 21:43:51,401 DEBUG: > GET / HTTP/1.1
+2025-10-28 21:43:51,401 DEBUG: > Host: localhost:38281
+2025-10-28 21:43:51,401 DEBUG: > Upgrade: websocket
+2025-10-28 21:43:51,401 DEBUG: > Connection: Upgrade
+2025-10-28 21:43:51,401 DEBUG: > Sec-WebSocket-Key: qV8nAoB0vf1vz+ySGjR0rQ==
+2025-10-28 21:43:51,401 DEBUG: > Sec-WebSocket-Version: 13
+2025-10-28 21:43:51,401 DEBUG: > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+2025-10-28 21:43:51,401 DEBUG: > User-Agent: Python/3.11 websockets/15.0.1
+2025-10-28 21:43:51,402 DEBUG: < HTTP/1.1 101 Switching Protocols
+2025-10-28 21:43:51,402 DEBUG: < Upgrade: websocket
+2025-10-28 21:43:51,402 DEBUG: < Connection: Upgrade
+2025-10-28 21:43:51,402 DEBUG: < Sec-WebSocket-Accept: 1xuhWj/VgeqzjgOtk3R1bmg2eMY=
+2025-10-28 21:43:51,402 DEBUG: < Sec-WebSocket-Extensions: permessage-deflate; server_max_window_bits=12; client_max_window_bits=12
+2025-10-28 21:43:51,402 DEBUG: < Date: Wed, 29 Oct 2025 01:43:51 GMT
+2025-10-28 21:43:51,402 DEBUG: < Server: Python/3.13 websockets/13.1
+2025-10-28 21:43:51,402 DEBUG: = connection is OPEN
+2025-10-28 21:43:51,402 DEBUG: < TEXT '[{"cmd":"RoomInfo","password":false,"games":["A...me":1761702231.403163}]' [518 bytes]
+2025-10-28 21:43:51,402 INFO: Connected to localhost:38281
+2025-10-28 21:43:51,403 DEBUG: > TEXT '{"cmd": "Connect", "game": "Left 4 Dead 2", "na...": 4, "password": null}' [93 bytes]
+2025-10-28 21:43:51,403 DEBUG: Sent payload: {"cmd": "Connect", "game": "Left 4 Dead 2", "name": "MySlot", "version": 4, "password": null}
+2025-10-28 21:43:51,403 INFO: Server message cmd=RoomInfo: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702231.403163}
+2025-10-28 21:43:51,403 DEBUG: RoomInfo received: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702231.403163}
+2025-10-28 21:43:51,403 DEBUG: < TEXT '[{"cmd":"InvalidPacket","type":"cmd","original_...nd from cmd at `cmd`"}]' [107 bytes]
+2025-10-28 21:43:51,405 INFO: Server message cmd=InvalidPacket: {'cmd': 'InvalidPacket', 'type': 'cmd', 'original_cmd': None, 'text': 'Could not get command from cmd at `cmd`'}
+2025-10-28 21:43:51,405 DEBUG: < CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:43:51,405 DEBUG: > CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:43:51,405 DEBUG: = connection is CLOSING
+2025-10-28 21:43:51,405 DEBUG: < EOF
+2025-10-28 21:43:51,406 DEBUG: > EOF
+2025-10-28 21:43:51,406 DEBUG: = connection is CLOSED
+2025-10-28 21:43:51,406 DEBUG: x half-closing TCP connection
+2025-10-28 21:43:51,406 INFO: WebSocket closed by server
+2025-10-28 21:43:51,509 INFO: Reconnecting in 3.4 seconds...
+2025-10-28 21:43:54,893 INFO: Connecting to ws://localhost:38281
+2025-10-28 21:43:54,894 DEBUG: = connection is CONNECTING
+2025-10-28 21:43:54,894 DEBUG: > GET / HTTP/1.1
+2025-10-28 21:43:54,894 DEBUG: > Host: localhost:38281
+2025-10-28 21:43:54,894 DEBUG: > Upgrade: websocket
+2025-10-28 21:43:54,894 DEBUG: > Connection: Upgrade
+2025-10-28 21:43:54,894 DEBUG: > Sec-WebSocket-Key: OoJ5lTW1Ho85FRUk/91mmA==
+2025-10-28 21:43:54,894 DEBUG: > Sec-WebSocket-Version: 13
+2025-10-28 21:43:54,894 DEBUG: > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+2025-10-28 21:43:54,895 DEBUG: > User-Agent: Python/3.11 websockets/15.0.1
+2025-10-28 21:43:54,895 DEBUG: < HTTP/1.1 101 Switching Protocols
+2025-10-28 21:43:54,895 DEBUG: < Upgrade: websocket
+2025-10-28 21:43:54,895 DEBUG: < Connection: Upgrade
+2025-10-28 21:43:54,895 DEBUG: < Sec-WebSocket-Accept: 0tmBuZpSDAADijcWTEzBhXuUA2s=
+2025-10-28 21:43:54,895 DEBUG: < Sec-WebSocket-Extensions: permessage-deflate; server_max_window_bits=12; client_max_window_bits=12
+2025-10-28 21:43:54,895 DEBUG: < Date: Wed, 29 Oct 2025 01:43:54 GMT
+2025-10-28 21:43:54,895 DEBUG: < Server: Python/3.13 websockets/13.1
+2025-10-28 21:43:54,895 DEBUG: = connection is OPEN
+2025-10-28 21:43:54,895 DEBUG: < TEXT '[{"cmd":"RoomInfo","password":false,"games":["A...e":1761702234.8963919}]' [519 bytes]
+2025-10-28 21:43:54,895 INFO: Connected to localhost:38281
+2025-10-28 21:43:54,896 DEBUG: > TEXT '{"cmd": "Connect", "game": "Left 4 Dead 2", "na...": 4, "password": null}' [93 bytes]
+2025-10-28 21:43:54,896 DEBUG: Sent payload: {"cmd": "Connect", "game": "Left 4 Dead 2", "name": "MySlot", "version": 4, "password": null}
+2025-10-28 21:43:54,896 INFO: Server message cmd=RoomInfo: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702234.8963919}
+2025-10-28 21:43:54,896 DEBUG: RoomInfo received: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702234.8963919}
+2025-10-28 21:43:54,897 DEBUG: < TEXT '[{"cmd":"InvalidPacket","type":"cmd","original_...nd from cmd at `cmd`"}]' [107 bytes]
+2025-10-28 21:43:54,897 INFO: Server message cmd=InvalidPacket: {'cmd': 'InvalidPacket', 'type': 'cmd', 'original_cmd': None, 'text': 'Could not get command from cmd at `cmd`'}
+2025-10-28 21:43:54,897 DEBUG: < CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:43:54,897 DEBUG: > CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:43:54,897 DEBUG: = connection is CLOSING
+2025-10-28 21:43:54,899 DEBUG: < EOF
+2025-10-28 21:43:54,899 DEBUG: > EOF
+2025-10-28 21:43:54,899 DEBUG: = connection is CLOSED
+2025-10-28 21:43:54,899 DEBUG: x half-closing TCP connection
+2025-10-28 21:43:54,899 INFO: WebSocket closed by server
+2025-10-28 21:43:55,002 INFO: Reconnecting in 5.1 seconds...
+2025-10-28 21:44:00,073 INFO: Connecting to ws://localhost:38281
+2025-10-28 21:44:00,075 DEBUG: = connection is CONNECTING
+2025-10-28 21:44:00,075 DEBUG: > GET / HTTP/1.1
+2025-10-28 21:44:00,075 DEBUG: > Host: localhost:38281
+2025-10-28 21:44:00,075 DEBUG: > Upgrade: websocket
+2025-10-28 21:44:00,075 DEBUG: > Connection: Upgrade
+2025-10-28 21:44:00,075 DEBUG: > Sec-WebSocket-Key: O0rSiD9RIkCDPuDKZqslWA==
+2025-10-28 21:44:00,075 DEBUG: > Sec-WebSocket-Version: 13
+2025-10-28 21:44:00,075 DEBUG: > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+2025-10-28 21:44:00,075 DEBUG: > User-Agent: Python/3.11 websockets/15.0.1
+2025-10-28 21:44:00,076 DEBUG: < HTTP/1.1 101 Switching Protocols
+2025-10-28 21:44:00,076 DEBUG: < Upgrade: websocket
+2025-10-28 21:44:00,076 DEBUG: < Connection: Upgrade
+2025-10-28 21:44:00,076 DEBUG: < Sec-WebSocket-Accept: Z/fChEPALc4qAX9ErUtq/Enj/B0=
+2025-10-28 21:44:00,076 DEBUG: < Sec-WebSocket-Extensions: permessage-deflate; server_max_window_bits=12; client_max_window_bits=12
+2025-10-28 21:44:00,076 DEBUG: < Date: Wed, 29 Oct 2025 01:44:00 GMT
+2025-10-28 21:44:00,076 DEBUG: < Server: Python/3.13 websockets/13.1
+2025-10-28 21:44:00,076 DEBUG: = connection is OPEN
+2025-10-28 21:44:00,076 DEBUG: < TEXT '[{"cmd":"RoomInfo","password":false,"games":["A...e":1761702240.0764585}]' [519 bytes]
+2025-10-28 21:44:00,076 INFO: Connected to localhost:38281
+2025-10-28 21:44:00,076 DEBUG: > TEXT '{"cmd": "Connect", "game": "Left 4 Dead 2", "na...": 4, "password": null}' [93 bytes]
+2025-10-28 21:44:00,077 DEBUG: Sent payload: {"cmd": "Connect", "game": "Left 4 Dead 2", "name": "MySlot", "version": 4, "password": null}
+2025-10-28 21:44:00,077 INFO: Server message cmd=RoomInfo: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702240.0764585}
+2025-10-28 21:44:00,077 DEBUG: RoomInfo received: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702240.0764585}
+2025-10-28 21:44:00,077 DEBUG: < TEXT '[{"cmd":"InvalidPacket","type":"cmd","original_...nd from cmd at `cmd`"}]' [107 bytes]
+2025-10-28 21:44:00,077 INFO: Server message cmd=InvalidPacket: {'cmd': 'InvalidPacket', 'type': 'cmd', 'original_cmd': None, 'text': 'Could not get command from cmd at `cmd`'}
+2025-10-28 21:44:00,078 DEBUG: < CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:44:00,078 DEBUG: > CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:44:00,078 DEBUG: = connection is CLOSING
+2025-10-28 21:44:00,078 DEBUG: < EOF
+2025-10-28 21:44:00,078 DEBUG: > EOF
+2025-10-28 21:44:00,078 DEBUG: = connection is CLOSED
+2025-10-28 21:44:00,078 DEBUG: x half-closing TCP connection
+2025-10-28 21:44:00,078 INFO: WebSocket closed by server
+2025-10-28 21:44:00,182 INFO: Reconnecting in 7.6 seconds...
+2025-10-28 21:45:07,330 INFO: Using mod_data directory: C:\Users\austi\ArchipelagoTest\worlds\L4D2\ThirdPartyProgramStuff\mod_data
+2025-10-28 21:45:07,330 DEBUG: Using proactor: IocpProactor
+2025-10-28 21:45:07,330 INFO: Connecting to ws://localhost:38281
+2025-10-28 21:45:07,365 DEBUG: = connection is CONNECTING
+2025-10-28 21:45:07,366 DEBUG: > GET / HTTP/1.1
+2025-10-28 21:45:07,366 DEBUG: > Host: localhost:38281
+2025-10-28 21:45:07,366 DEBUG: > Upgrade: websocket
+2025-10-28 21:45:07,366 DEBUG: > Connection: Upgrade
+2025-10-28 21:45:07,366 DEBUG: > Sec-WebSocket-Key: 3ctWrRxK0efBCl60PUyrEA==
+2025-10-28 21:45:07,366 DEBUG: > Sec-WebSocket-Version: 13
+2025-10-28 21:45:07,366 DEBUG: > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+2025-10-28 21:45:07,366 DEBUG: > User-Agent: Python/3.11 websockets/15.0.1
+2025-10-28 21:45:07,366 DEBUG: < HTTP/1.1 101 Switching Protocols
+2025-10-28 21:45:07,366 DEBUG: < Upgrade: websocket
+2025-10-28 21:45:07,366 DEBUG: < Connection: Upgrade
+2025-10-28 21:45:07,366 DEBUG: < Sec-WebSocket-Accept: kdJndsZzKjxm8EuPWVG8WUWDPKM=
+2025-10-28 21:45:07,366 DEBUG: < Sec-WebSocket-Extensions: permessage-deflate; server_max_window_bits=12; client_max_window_bits=12
+2025-10-28 21:45:07,366 DEBUG: < Date: Wed, 29 Oct 2025 01:45:07 GMT
+2025-10-28 21:45:07,366 DEBUG: < Server: Python/3.13 websockets/13.1
+2025-10-28 21:45:07,367 DEBUG: = connection is OPEN
+2025-10-28 21:45:07,367 DEBUG: < TEXT '[{"cmd":"RoomInfo","password":false,"games":["A...e":1761702307.3672903}]' [519 bytes]
+2025-10-28 21:45:07,367 INFO: Connected to localhost:38281
+2025-10-28 21:45:07,368 DEBUG: > TEXT '{"cmd": "Connect", "game": "Left 4 Dead 2", "na...": 4, "password": null}' [94 bytes]
+2025-10-28 21:45:07,368 DEBUG: Sent payload: {"cmd": "Connect", "game": "Left 4 Dead 2", "name": "Player1", "version": 4, "password": null}
+2025-10-28 21:45:07,368 INFO: Server message cmd=RoomInfo: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702307.3672903}
+2025-10-28 21:45:07,368 DEBUG: RoomInfo received: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702307.3672903}
+2025-10-28 21:45:07,368 DEBUG: < TEXT '[{"cmd":"InvalidPacket","type":"cmd","original_...nd from cmd at `cmd`"}]' [107 bytes]
+2025-10-28 21:45:07,369 INFO: Server message cmd=InvalidPacket: {'cmd': 'InvalidPacket', 'type': 'cmd', 'original_cmd': None, 'text': 'Could not get command from cmd at `cmd`'}
+2025-10-28 21:45:07,369 DEBUG: < CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:45:07,369 DEBUG: > CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:45:07,369 DEBUG: = connection is CLOSING
+2025-10-28 21:45:07,369 DEBUG: < EOF
+2025-10-28 21:45:07,369 DEBUG: > EOF
+2025-10-28 21:45:07,369 DEBUG: = connection is CLOSED
+2025-10-28 21:45:07,369 DEBUG: x half-closing TCP connection
+2025-10-28 21:45:07,369 INFO: WebSocket closed by server
+2025-10-28 21:45:07,482 INFO: Reconnecting in 1.0 seconds...
+2025-10-28 21:45:08,493 INFO: Connecting to ws://localhost:38281
+2025-10-28 21:45:08,494 DEBUG: = connection is CONNECTING
+2025-10-28 21:45:08,494 DEBUG: > GET / HTTP/1.1
+2025-10-28 21:45:08,494 DEBUG: > Host: localhost:38281
+2025-10-28 21:45:08,494 DEBUG: > Upgrade: websocket
+2025-10-28 21:45:08,494 DEBUG: > Connection: Upgrade
+2025-10-28 21:45:08,494 DEBUG: > Sec-WebSocket-Key: pHFapJ00RuiU6qBadlSMSg==
+2025-10-28 21:45:08,494 DEBUG: > Sec-WebSocket-Version: 13
+2025-10-28 21:45:08,494 DEBUG: > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+2025-10-28 21:45:08,494 DEBUG: > User-Agent: Python/3.11 websockets/15.0.1
+2025-10-28 21:45:08,495 DEBUG: < HTTP/1.1 101 Switching Protocols
+2025-10-28 21:45:08,495 DEBUG: < Upgrade: websocket
+2025-10-28 21:45:08,495 DEBUG: < Connection: Upgrade
+2025-10-28 21:45:08,495 DEBUG: < Sec-WebSocket-Accept: cRKcqqbSBXZRX3RYoOeqZFGeF4U=
+2025-10-28 21:45:08,495 DEBUG: < Sec-WebSocket-Extensions: permessage-deflate; server_max_window_bits=12; client_max_window_bits=12
+2025-10-28 21:45:08,495 DEBUG: < Date: Wed, 29 Oct 2025 01:45:08 GMT
+2025-10-28 21:45:08,495 DEBUG: < Server: Python/3.13 websockets/13.1
+2025-10-28 21:45:08,495 DEBUG: = connection is OPEN
+2025-10-28 21:45:08,495 DEBUG: < TEXT '[{"cmd":"RoomInfo","password":false,"games":["A...e":1761702308.4956057}]' [519 bytes]
+2025-10-28 21:45:08,495 INFO: Connected to localhost:38281
+2025-10-28 21:45:08,496 DEBUG: > TEXT '{"cmd": "Connect", "game": "Left 4 Dead 2", "na...": 4, "password": null}' [94 bytes]
+2025-10-28 21:45:08,496 DEBUG: Sent payload: {"cmd": "Connect", "game": "Left 4 Dead 2", "name": "Player1", "version": 4, "password": null}
+2025-10-28 21:45:08,496 INFO: Server message cmd=RoomInfo: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702308.4956057}
+2025-10-28 21:45:08,496 DEBUG: RoomInfo received: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702308.4956057}
+2025-10-28 21:45:08,496 DEBUG: < TEXT '[{"cmd":"InvalidPacket","type":"cmd","original_...nd from cmd at `cmd`"}]' [107 bytes]
+2025-10-28 21:45:08,496 INFO: Server message cmd=InvalidPacket: {'cmd': 'InvalidPacket', 'type': 'cmd', 'original_cmd': None, 'text': 'Could not get command from cmd at `cmd`'}
+2025-10-28 21:45:08,497 DEBUG: < CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:45:08,497 DEBUG: > CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:45:08,497 DEBUG: = connection is CLOSING
+2025-10-28 21:45:08,497 DEBUG: < EOF
+2025-10-28 21:45:08,497 DEBUG: > EOF
+2025-10-28 21:45:08,497 DEBUG: = connection is CLOSED
+2025-10-28 21:45:08,497 DEBUG: x half-closing TCP connection
+2025-10-28 21:45:08,497 INFO: WebSocket closed by server
+2025-10-28 21:45:08,601 INFO: Reconnecting in 1.5 seconds...
+2025-10-28 21:45:10,113 INFO: Connecting to ws://localhost:38281
+2025-10-28 21:45:10,114 DEBUG: = connection is CONNECTING
+2025-10-28 21:45:10,114 DEBUG: > GET / HTTP/1.1
+2025-10-28 21:45:10,115 DEBUG: > Host: localhost:38281
+2025-10-28 21:45:10,115 DEBUG: > Upgrade: websocket
+2025-10-28 21:45:10,115 DEBUG: > Connection: Upgrade
+2025-10-28 21:45:10,115 DEBUG: > Sec-WebSocket-Key: 8g44miYmxKGipaWFe6Akrg==
+2025-10-28 21:45:10,115 DEBUG: > Sec-WebSocket-Version: 13
+2025-10-28 21:45:10,115 DEBUG: > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+2025-10-28 21:45:10,115 DEBUG: > User-Agent: Python/3.11 websockets/15.0.1
+2025-10-28 21:45:10,115 DEBUG: < HTTP/1.1 101 Switching Protocols
+2025-10-28 21:45:10,115 DEBUG: < Upgrade: websocket
+2025-10-28 21:45:10,115 DEBUG: < Connection: Upgrade
+2025-10-28 21:45:10,115 DEBUG: < Sec-WebSocket-Accept: xsjpMxD+09vZnyaNerpmIdwKRcU=
+2025-10-28 21:45:10,115 DEBUG: < Sec-WebSocket-Extensions: permessage-deflate; server_max_window_bits=12; client_max_window_bits=12
+2025-10-28 21:45:10,115 DEBUG: < Date: Wed, 29 Oct 2025 01:45:10 GMT
+2025-10-28 21:45:10,115 DEBUG: < Server: Python/3.13 websockets/13.1
+2025-10-28 21:45:10,116 DEBUG: = connection is OPEN
+2025-10-28 21:45:10,116 DEBUG: < TEXT '[{"cmd":"RoomInfo","password":false,"games":["A...e":1761702310.1167872}]' [519 bytes]
+2025-10-28 21:45:10,116 INFO: Connected to localhost:38281
+2025-10-28 21:45:10,117 DEBUG: > TEXT '{"cmd": "Connect", "game": "Left 4 Dead 2", "na...": 4, "password": null}' [94 bytes]
+2025-10-28 21:45:10,117 DEBUG: Sent payload: {"cmd": "Connect", "game": "Left 4 Dead 2", "name": "Player1", "version": 4, "password": null}
+2025-10-28 21:45:10,117 INFO: Server message cmd=RoomInfo: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702310.1167872}
+2025-10-28 21:45:10,117 DEBUG: RoomInfo received: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702310.1167872}
+2025-10-28 21:45:10,119 DEBUG: < TEXT '[{"cmd":"InvalidPacket","type":"cmd","original_...nd from cmd at `cmd`"}]' [107 bytes]
+2025-10-28 21:45:10,119 INFO: Server message cmd=InvalidPacket: {'cmd': 'InvalidPacket', 'type': 'cmd', 'original_cmd': None, 'text': 'Could not get command from cmd at `cmd`'}
+2025-10-28 21:45:10,119 DEBUG: < CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:45:10,119 DEBUG: > CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:45:10,119 DEBUG: = connection is CLOSING
+2025-10-28 21:45:10,119 DEBUG: < EOF
+2025-10-28 21:45:10,119 DEBUG: > EOF
+2025-10-28 21:45:10,119 DEBUG: = connection is CLOSED
+2025-10-28 21:45:10,120 DEBUG: x half-closing TCP connection
+2025-10-28 21:45:10,120 INFO: WebSocket closed by server
+2025-10-28 21:45:10,222 INFO: Reconnecting in 2.2 seconds...
+2025-10-28 21:45:12,477 INFO: Connecting to ws://localhost:38281
+2025-10-28 21:45:12,478 DEBUG: = connection is CONNECTING
+2025-10-28 21:45:12,478 DEBUG: > GET / HTTP/1.1
+2025-10-28 21:45:12,478 DEBUG: > Host: localhost:38281
+2025-10-28 21:45:12,478 DEBUG: > Upgrade: websocket
+2025-10-28 21:45:12,478 DEBUG: > Connection: Upgrade
+2025-10-28 21:45:12,478 DEBUG: > Sec-WebSocket-Key: GTv4gtqjH2zMc/2nrccVjg==
+2025-10-28 21:45:12,478 DEBUG: > Sec-WebSocket-Version: 13
+2025-10-28 21:45:12,478 DEBUG: > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+2025-10-28 21:45:12,478 DEBUG: > User-Agent: Python/3.11 websockets/15.0.1
+2025-10-28 21:45:12,480 DEBUG: < HTTP/1.1 101 Switching Protocols
+2025-10-28 21:45:12,480 DEBUG: < Upgrade: websocket
+2025-10-28 21:45:12,480 DEBUG: < Connection: Upgrade
+2025-10-28 21:45:12,480 DEBUG: < Sec-WebSocket-Accept: BfHlFjxPoGHckfGYrIyquClyX+4=
+2025-10-28 21:45:12,480 DEBUG: < Sec-WebSocket-Extensions: permessage-deflate; server_max_window_bits=12; client_max_window_bits=12
+2025-10-28 21:45:12,480 DEBUG: < Date: Wed, 29 Oct 2025 01:45:12 GMT
+2025-10-28 21:45:12,480 DEBUG: < Server: Python/3.13 websockets/13.1
+2025-10-28 21:45:12,480 DEBUG: = connection is OPEN
+2025-10-28 21:45:12,480 DEBUG: < TEXT '[{"cmd":"RoomInfo","password":false,"games":["A...e":1761702312.4804862}]' [519 bytes]
+2025-10-28 21:45:12,480 INFO: Connected to localhost:38281
+2025-10-28 21:45:12,480 DEBUG: > TEXT '{"cmd": "Connect", "game": "Left 4 Dead 2", "na...": 4, "password": null}' [94 bytes]
+2025-10-28 21:45:12,480 DEBUG: Sent payload: {"cmd": "Connect", "game": "Left 4 Dead 2", "name": "Player1", "version": 4, "password": null}
+2025-10-28 21:45:12,480 INFO: Server message cmd=RoomInfo: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702312.4804862}
+2025-10-28 21:45:12,480 DEBUG: RoomInfo received: {'cmd': 'RoomInfo', 'password': False, 'games': ['Archipelago', 'Left 4 Dead 2'], 'tags': ['AP'], 'version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'generator_version': {'major': 0, 'minor': 6, 'build': 4, 'class': 'Version'}, 'permissions': {'release': 6, 'remaining': 2, 'collect': 6}, 'hint_cost': 10, 'location_check_points': 1, 'datapackage_checksums': {'Left 4 Dead 2': 'd6aa0009b930af9a2f6587270a19cc0c14818205', 'Archipelago': 'ac9141e9ad0318df2fa27da5f20c50a842afeecb'}, 'seed_name': '33161800977331566862', 'time': 1761702312.4804862}
+2025-10-28 21:45:12,480 DEBUG: < TEXT '[{"cmd":"InvalidPacket","type":"cmd","original_...nd from cmd at `cmd`"}]' [107 bytes]
+2025-10-28 21:45:12,480 INFO: Server message cmd=InvalidPacket: {'cmd': 'InvalidPacket', 'type': 'cmd', 'original_cmd': None, 'text': 'Could not get command from cmd at `cmd`'}
+2025-10-28 21:45:12,482 DEBUG: < CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:45:12,482 DEBUG: > CLOSE 1000 (OK) [2 bytes]
+2025-10-28 21:45:12,482 DEBUG: = connection is CLOSING
+2025-10-28 21:45:12,482 DEBUG: < EOF
+2025-10-28 21:45:12,482 DEBUG: > EOF
+2025-10-28 21:45:12,482 DEBUG: = connection is CLOSED
+2025-10-28 21:45:12,482 DEBUG: x half-closing TCP connection
+2025-10-28 21:45:12,482 INFO: WebSocket closed by server
+2025-10-28 21:45:12,585 INFO: Reconnecting in 3.4 seconds...
+2025-10-28 21:52:50,347 INFO: Using mod_data directory: C:\Users\austi\ArchipelagoTest\worlds\L4D2\ThirdPartyProgramStuff\mod_data
+2025-10-28 21:52:50,348 DEBUG: Using proactor: IocpProactor
+2025-10-28 21:52:50,348 INFO: Connecting to ws://localhost:38282
+2025-10-28 21:52:50,381 DEBUG: = connection is CONNECTING
+2025-10-28 21:52:50,381 DEBUG: > GET / HTTP/1.1
+2025-10-28 21:52:50,381 DEBUG: > Host: localhost:38282
+2025-10-28 21:52:50,381 DEBUG: > Upgrade: websocket
+2025-10-28 21:52:50,381 DEBUG: > Connection: Upgrade
+2025-10-28 21:52:50,382 DEBUG: > Sec-WebSocket-Key: zQTlG/h5Vxlip7840KSNqA==
+2025-10-28 21:52:50,382 DEBUG: > Sec-WebSocket-Version: 13
+2025-10-28 21:52:50,382 DEBUG: > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+2025-10-28 21:52:50,382 DEBUG: > User-Agent: Python/3.11 websockets/15.0.1
+2025-10-28 21:52:50,382 DEBUG: < HTTP/1.1 101 Switching Protocols
+2025-10-28 21:52:50,382 DEBUG: < Date: Wed, 29 Oct 2025 01:52:50 GMT
+2025-10-28 21:52:50,382 DEBUG: < Upgrade: websocket
+2025-10-28 21:52:50,382 DEBUG: < Connection: Upgrade
+2025-10-28 21:52:50,382 DEBUG: < Sec-WebSocket-Accept: +/sjtCYwf3Jdm929B7Mg9FwQ8WY=
+2025-10-28 21:52:50,382 DEBUG: < Sec-WebSocket-Extensions: permessage-deflate; server_max_window_bits=12; client_max_window_bits=12
+2025-10-28 21:52:50,382 DEBUG: < Server: Python/3.11 websockets/15.0.1
+2025-10-28 21:52:50,383 DEBUG: = connection is OPEN
+2025-10-28 21:52:50,383 INFO: Connected to localhost:38282
+2025-10-28 21:52:50,383 DEBUG: > TEXT '{"cmd": "Connect", "game": "Left 4 Dead 2", "na...": 4, "password": null}' [94 bytes]
+2025-10-28 21:52:50,383 DEBUG: Sent payload: {"cmd": "Connect", "game": "Left 4 Dead 2", "name": "Player1", "version": 4, "password": null}
+2025-10-28 21:52:50,383 DEBUG: < CLOSE 1011 (internal error) [2 bytes]
+2025-10-28 21:52:50,383 DEBUG: > CLOSE 1011 (internal error) [2 bytes]
+2025-10-28 21:52:50,384 DEBUG: = connection is CLOSING
+2025-10-28 21:52:50,384 DEBUG: < EOF
+2025-10-28 21:52:50,384 DEBUG: > EOF
+2025-10-28 21:52:50,384 DEBUG: = connection is CLOSED
+2025-10-28 21:52:50,384 DEBUG: x half-closing TCP connection
+2025-10-28 21:52:50,384 INFO: WebSocket closed by server
+2025-10-28 21:52:50,494 INFO: Reconnecting in 1.0 seconds...
+2025-10-28 21:52:51,503 INFO: Connecting to ws://localhost:38282
+2025-10-28 21:52:51,504 DEBUG: = connection is CONNECTING
+2025-10-28 21:52:51,504 DEBUG: > GET / HTTP/1.1
+2025-10-28 21:52:51,504 DEBUG: > Host: localhost:38282
+2025-10-28 21:52:51,504 DEBUG: > Upgrade: websocket
+2025-10-28 21:52:51,504 DEBUG: > Connection: Upgrade
+2025-10-28 21:52:51,504 DEBUG: > Sec-WebSocket-Key: 5E5DaMcYyKIPDenIyDQ9Rg==
+2025-10-28 21:52:51,504 DEBUG: > Sec-WebSocket-Version: 13
+2025-10-28 21:52:51,504 DEBUG: > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+2025-10-28 21:52:51,504 DEBUG: > User-Agent: Python/3.11 websockets/15.0.1
+2025-10-28 21:52:51,505 DEBUG: < HTTP/1.1 101 Switching Protocols
+2025-10-28 21:52:51,505 DEBUG: < Date: Wed, 29 Oct 2025 01:52:51 GMT
+2025-10-28 21:52:51,505 DEBUG: < Upgrade: websocket
+2025-10-28 21:52:51,505 DEBUG: < Connection: Upgrade
+2025-10-28 21:52:51,505 DEBUG: < Sec-WebSocket-Accept: HTM5LkeSIg2tXrKIOvJZ4VPQJ60=
+2025-10-28 21:52:51,505 DEBUG: < Sec-WebSocket-Extensions: permessage-deflate; server_max_window_bits=12; client_max_window_bits=12
+2025-10-28 21:52:51,505 DEBUG: < Server: Python/3.11 websockets/15.0.1
+2025-10-28 21:52:51,506 DEBUG: = connection is OPEN
+2025-10-28 21:52:51,506 INFO: Connected to localhost:38282
+2025-10-28 21:52:51,506 DEBUG: > TEXT '{"cmd": "Connect", "game": "Left 4 Dead 2", "na...": 4, "password": null}' [94 bytes]
+2025-10-28 21:52:51,506 DEBUG: Sent payload: {"cmd": "Connect", "game": "Left 4 Dead 2", "name": "Player1", "version": 4, "password": null}
+2025-10-28 21:52:51,506 DEBUG: < CLOSE 1011 (internal error) [2 bytes]
+2025-10-28 21:52:51,506 DEBUG: > CLOSE 1011 (internal error) [2 bytes]
+2025-10-28 21:52:51,507 DEBUG: = connection is CLOSING
+2025-10-28 21:52:51,507 DEBUG: < EOF
+2025-10-28 21:52:51,507 DEBUG: > EOF
+2025-10-28 21:52:51,507 DEBUG: = connection is CLOSED
+2025-10-28 21:52:51,507 DEBUG: x half-closing TCP connection
+2025-10-28 21:52:51,507 INFO: WebSocket closed by server
+2025-10-28 21:52:51,612 INFO: Reconnecting in 1.5 seconds...
+2025-10-28 21:52:53,121 INFO: Connecting to ws://localhost:38282
+2025-10-28 21:52:53,121 DEBUG: = connection is CONNECTING
+2025-10-28 21:52:53,122 DEBUG: > GET / HTTP/1.1
+2025-10-28 21:52:53,122 DEBUG: > Host: localhost:38282
+2025-10-28 21:52:53,122 DEBUG: > Upgrade: websocket
+2025-10-28 21:52:53,122 DEBUG: > Connection: Upgrade
+2025-10-28 21:52:53,122 DEBUG: > Sec-WebSocket-Key: aKCwcwTybFYn1zCcWqIafQ==
+2025-10-28 21:52:53,122 DEBUG: > Sec-WebSocket-Version: 13
+2025-10-28 21:52:53,122 DEBUG: > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+2025-10-28 21:52:53,122 DEBUG: > User-Agent: Python/3.11 websockets/15.0.1
+2025-10-28 21:52:53,122 DEBUG: < HTTP/1.1 101 Switching Protocols
+2025-10-28 21:52:53,122 DEBUG: < Date: Wed, 29 Oct 2025 01:52:53 GMT
+2025-10-28 21:52:53,122 DEBUG: < Upgrade: websocket
+2025-10-28 21:52:53,122 DEBUG: < Connection: Upgrade
+2025-10-28 21:52:53,122 DEBUG: < Sec-WebSocket-Accept: Iriq44IelNoRQvJWfSgXy/jnSsg=
+2025-10-28 21:52:53,122 DEBUG: < Sec-WebSocket-Extensions: permessage-deflate; server_max_window_bits=12; client_max_window_bits=12
+2025-10-28 21:52:53,122 DEBUG: < Server: Python/3.11 websockets/15.0.1
+2025-10-28 21:52:53,124 DEBUG: = connection is OPEN
+2025-10-28 21:52:53,124 DEBUG: < CLOSE 1011 (internal error) [2 bytes]
+2025-10-28 21:52:53,124 DEBUG: > CLOSE 1011 (internal error) [2 bytes]
+2025-10-28 21:52:53,124 DEBUG: = connection is CLOSING
+2025-10-28 21:52:53,124 INFO: Connected to localhost:38282
+2025-10-28 21:52:53,124 DEBUG: < EOF
+2025-10-28 21:52:53,124 DEBUG: > EOF
+2025-10-28 21:52:53,124 DEBUG: = connection is CLOSED
+2025-10-28 21:52:53,124 DEBUG: x half-closing TCP connection
+2025-10-28 21:52:53,124 ERROR: Failed to send payload over websocket
+Traceback (most recent call last):
+  File "C:\Users\austi\ArchipelagoTest\worlds\L4D2\ThirdPartyProgramStuff\ap_companion.py", line 81, in send_json
+    await ws.send(payload)
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\asyncio\connection.py", line 476, in send
+    async with self.send_context():
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 204, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\asyncio\connection.py", line 957, in send_context
+    raise self.protocol.close_exc from original_exc
+websockets.exceptions.ConnectionClosedError: received 1011 (internal error); then sent 1011 (internal error)
+2025-10-28 21:52:53,125 INFO: WebSocket closed by server
+2025-10-28 21:52:53,229 INFO: Reconnecting in 2.2 seconds...
+2025-10-28 21:54:00,108 INFO: Using mod_data directory: C:\Users\austi\ArchipelagoTest\worlds\L4D2\ThirdPartyProgramStuff\mod_data
+2025-10-28 21:54:00,108 DEBUG: Using proactor: IocpProactor
+2025-10-28 21:54:00,110 INFO: Connecting to ws://localhost:38282
+2025-10-28 21:54:00,143 DEBUG: = connection is CONNECTING
+2025-10-28 21:54:00,144 DEBUG: > GET / HTTP/1.1
+2025-10-28 21:54:00,144 DEBUG: > Host: localhost:38282
+2025-10-28 21:54:00,144 DEBUG: > Upgrade: websocket
+2025-10-28 21:54:00,144 DEBUG: > Connection: Upgrade
+2025-10-28 21:54:00,144 DEBUG: > Sec-WebSocket-Key: Msih6wG8bB6ZCM0kxcZvNw==
+2025-10-28 21:54:00,144 DEBUG: > Sec-WebSocket-Version: 13
+2025-10-28 21:54:00,144 DEBUG: > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+2025-10-28 21:54:00,144 DEBUG: > User-Agent: Python/3.11 websockets/15.0.1
+2025-10-28 21:54:00,145 DEBUG: < HTTP/1.1 101 Switching Protocols
+2025-10-28 21:54:00,145 DEBUG: < Date: Wed, 29 Oct 2025 01:54:00 GMT
+2025-10-28 21:54:00,145 DEBUG: < Upgrade: websocket
+2025-10-28 21:54:00,145 DEBUG: < Connection: Upgrade
+2025-10-28 21:54:00,145 DEBUG: < Sec-WebSocket-Accept: 77AR5jxJLqk6Oj+MsfKqsDWB/QQ=
+2025-10-28 21:54:00,145 DEBUG: < Sec-WebSocket-Extensions: permessage-deflate; server_max_window_bits=12; client_max_window_bits=12
+2025-10-28 21:54:00,145 DEBUG: < Server: Python/3.11 websockets/15.0.1
+2025-10-28 21:54:00,145 DEBUG: = connection is OPEN
+2025-10-28 21:54:00,145 DEBUG: < CLOSE 1011 (internal error) [2 bytes]
+2025-10-28 21:54:00,145 DEBUG: > CLOSE 1011 (internal error) [2 bytes]
+2025-10-28 21:54:00,145 DEBUG: = connection is CLOSING
+2025-10-28 21:54:00,145 INFO: Connected to localhost:38282
+2025-10-28 21:54:00,145 DEBUG: < EOF
+2025-10-28 21:54:00,145 DEBUG: > EOF
+2025-10-28 21:54:00,145 DEBUG: = connection is CLOSED
+2025-10-28 21:54:00,145 DEBUG: x half-closing TCP connection
+2025-10-28 21:54:00,146 ERROR: Failed to send payload over websocket
+Traceback (most recent call last):
+  File "C:\Users\austi\ArchipelagoTest\worlds\L4D2\ThirdPartyProgramStuff\ap_companion.py", line 81, in send_json
+    await ws.send(payload)
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\asyncio\connection.py", line 476, in send
+    async with self.send_context():
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 204, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\asyncio\connection.py", line 957, in send_context
+    raise self.protocol.close_exc from original_exc
+websockets.exceptions.ConnectionClosedError: received 1011 (internal error); then sent 1011 (internal error)
+2025-10-28 21:54:00,147 INFO: WebSocket closed by server
+2025-10-28 21:54:00,257 INFO: Reconnecting in 1.0 seconds...
+2025-10-28 21:54:01,263 INFO: Connecting to ws://localhost:38282
+2025-10-28 21:54:01,264 DEBUG: = connection is CONNECTING
+2025-10-28 21:54:01,264 DEBUG: > GET / HTTP/1.1
+2025-10-28 21:54:01,264 DEBUG: > Host: localhost:38282
+2025-10-28 21:54:01,264 DEBUG: > Upgrade: websocket
+2025-10-28 21:54:01,264 DEBUG: > Connection: Upgrade
+2025-10-28 21:54:01,264 DEBUG: > Sec-WebSocket-Key: kohq44VySTsEgUyuVaImNQ==
+2025-10-28 21:54:01,264 DEBUG: > Sec-WebSocket-Version: 13
+2025-10-28 21:54:01,264 DEBUG: > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+2025-10-28 21:54:01,264 DEBUG: > User-Agent: Python/3.11 websockets/15.0.1
+2025-10-28 21:54:01,265 DEBUG: < HTTP/1.1 101 Switching Protocols
+2025-10-28 21:54:01,265 DEBUG: < Date: Wed, 29 Oct 2025 01:54:01 GMT
+2025-10-28 21:54:01,265 DEBUG: < Upgrade: websocket
+2025-10-28 21:54:01,265 DEBUG: < Connection: Upgrade
+2025-10-28 21:54:01,265 DEBUG: < Sec-WebSocket-Accept: Tj3yh+Pnjrev+5HLMX9zNNIzo0k=
+2025-10-28 21:54:01,265 DEBUG: < Sec-WebSocket-Extensions: permessage-deflate; server_max_window_bits=12; client_max_window_bits=12
+2025-10-28 21:54:01,265 DEBUG: < Server: Python/3.11 websockets/15.0.1
+2025-10-28 21:54:01,265 DEBUG: = connection is OPEN
+2025-10-28 21:54:01,265 INFO: Connected to localhost:38282
+2025-10-28 21:54:01,266 DEBUG: > TEXT '{"cmd": "Connect", "game": "Left 4 Dead 2", "na...": 4, "password": null}' [94 bytes]
+2025-10-28 21:54:01,266 DEBUG: Sent payload: {"cmd": "Connect", "game": "Left 4 Dead 2", "name": "Player1", "version": 4, "password": null}
+2025-10-28 21:54:01,266 DEBUG: < CLOSE 1011 (internal error) [2 bytes]
+2025-10-28 21:54:01,266 DEBUG: > CLOSE 1011 (internal error) [2 bytes]
+2025-10-28 21:54:01,266 DEBUG: = connection is CLOSING
+2025-10-28 21:54:01,266 DEBUG: < EOF
+2025-10-28 21:54:01,266 DEBUG: > EOF
+2025-10-28 21:54:01,266 DEBUG: = connection is CLOSED
+2025-10-28 21:54:01,266 DEBUG: x half-closing TCP connection
+2025-10-28 21:54:01,266 INFO: WebSocket closed by server
+2025-10-28 21:54:01,371 INFO: Reconnecting in 1.5 seconds...
+2025-10-28 21:54:02,871 INFO: Connecting to ws://localhost:38282
+2025-10-28 21:54:02,873 DEBUG: = connection is CONNECTING
+2025-10-28 21:54:02,873 DEBUG: > GET / HTTP/1.1
+2025-10-28 21:54:02,873 DEBUG: > Host: localhost:38282
+2025-10-28 21:54:02,873 DEBUG: > Upgrade: websocket
+2025-10-28 21:54:02,873 DEBUG: > Connection: Upgrade
+2025-10-28 21:54:02,873 DEBUG: > Sec-WebSocket-Key: gLmjVAr1wNxTnjkcavVm5A==
+2025-10-28 21:54:02,873 DEBUG: > Sec-WebSocket-Version: 13
+2025-10-28 21:54:02,873 DEBUG: > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+2025-10-28 21:54:02,873 DEBUG: > User-Agent: Python/3.11 websockets/15.0.1
+2025-10-28 21:54:02,874 DEBUG: < HTTP/1.1 101 Switching Protocols
+2025-10-28 21:54:02,874 DEBUG: < Date: Wed, 29 Oct 2025 01:54:02 GMT
+2025-10-28 21:54:02,874 DEBUG: < Upgrade: websocket
+2025-10-28 21:54:02,874 DEBUG: < Connection: Upgrade
+2025-10-28 21:54:02,874 DEBUG: < Sec-WebSocket-Accept: K68KDIY/Yk4bpMQIIkB5R0f8j34=
+2025-10-28 21:54:02,874 DEBUG: < Sec-WebSocket-Extensions: permessage-deflate; server_max_window_bits=12; client_max_window_bits=12
+2025-10-28 21:54:02,874 DEBUG: < Server: Python/3.11 websockets/15.0.1
+2025-10-28 21:54:02,874 DEBUG: = connection is OPEN
+2025-10-28 21:54:02,875 DEBUG: < CLOSE 1011 (internal error) [2 bytes]
+2025-10-28 21:54:02,875 DEBUG: > CLOSE 1011 (internal error) [2 bytes]
+2025-10-28 21:54:02,875 DEBUG: = connection is CLOSING
+2025-10-28 21:54:02,875 INFO: Connected to localhost:38282
+2025-10-28 21:54:02,875 DEBUG: < EOF
+2025-10-28 21:54:02,875 DEBUG: > EOF
+2025-10-28 21:54:02,875 DEBUG: = connection is CLOSED
+2025-10-28 21:54:02,875 DEBUG: x half-closing TCP connection
+2025-10-28 21:54:02,875 ERROR: Failed to send payload over websocket
+Traceback (most recent call last):
+  File "C:\Users\austi\ArchipelagoTest\worlds\L4D2\ThirdPartyProgramStuff\ap_companion.py", line 81, in send_json
+    await ws.send(payload)
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\asyncio\connection.py", line 476, in send
+    async with self.send_context():
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 204, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\asyncio\connection.py", line 957, in send_context
+    raise self.protocol.close_exc from original_exc
+websockets.exceptions.ConnectionClosedError: received 1011 (internal error); then sent 1011 (internal error)
+2025-10-28 21:54:02,876 INFO: WebSocket closed by server
+2025-10-28 21:54:02,978 INFO: Reconnecting in 2.2 seconds...
+2025-10-28 21:54:05,240 INFO: Connecting to ws://localhost:38282
+2025-10-28 21:54:05,241 DEBUG: = connection is CONNECTING
+2025-10-28 21:54:05,241 DEBUG: > GET / HTTP/1.1
+2025-10-28 21:54:05,241 DEBUG: > Host: localhost:38282
+2025-10-28 21:54:05,241 DEBUG: > Upgrade: websocket
+2025-10-28 21:54:05,241 DEBUG: > Connection: Upgrade
+2025-10-28 21:54:05,241 DEBUG: > Sec-WebSocket-Key: 97Ka/RHeYH4RTFiyOTOYPw==
+2025-10-28 21:54:05,241 DEBUG: > Sec-WebSocket-Version: 13
+2025-10-28 21:54:05,241 DEBUG: > Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+2025-10-28 21:54:05,241 DEBUG: > User-Agent: Python/3.11 websockets/15.0.1
+2025-10-28 21:54:05,242 DEBUG: < HTTP/1.1 101 Switching Protocols
+2025-10-28 21:54:05,242 DEBUG: < Date: Wed, 29 Oct 2025 01:54:05 GMT
+2025-10-28 21:54:05,242 DEBUG: < Upgrade: websocket
+2025-10-28 21:54:05,242 DEBUG: < Connection: Upgrade
+2025-10-28 21:54:05,242 DEBUG: < Sec-WebSocket-Accept: axRW3LxSQ5Omq+3ScG+UcoDzF4g=
+2025-10-28 21:54:05,242 DEBUG: < Sec-WebSocket-Extensions: permessage-deflate; server_max_window_bits=12; client_max_window_bits=12
+2025-10-28 21:54:05,242 DEBUG: < Server: Python/3.11 websockets/15.0.1
+2025-10-28 21:54:05,242 DEBUG: = connection is OPEN
+2025-10-28 21:54:05,242 DEBUG: < CLOSE 1011 (internal error) [2 bytes]
+2025-10-28 21:54:05,242 DEBUG: > CLOSE 1011 (internal error) [2 bytes]
+2025-10-28 21:54:05,242 DEBUG: = connection is CLOSING
+2025-10-28 21:54:05,242 INFO: Connected to localhost:38282
+2025-10-28 21:54:05,242 DEBUG: < EOF
+2025-10-28 21:54:05,242 DEBUG: > EOF
+2025-10-28 21:54:05,244 DEBUG: = connection is CLOSED
+2025-10-28 21:54:05,244 DEBUG: x half-closing TCP connection
+2025-10-28 21:54:05,244 ERROR: Failed to send payload over websocket
+Traceback (most recent call last):
+  File "C:\Users\austi\ArchipelagoTest\worlds\L4D2\ThirdPartyProgramStuff\ap_companion.py", line 81, in send_json
+    await ws.send(payload)
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\asyncio\connection.py", line 476, in send
+    async with self.send_context():
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 204, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\asyncio\connection.py", line 957, in send_context
+    raise self.protocol.close_exc from original_exc
+websockets.exceptions.ConnectionClosedError: received 1011 (internal error); then sent 1011 (internal error)
+2025-10-28 21:54:05,244 INFO: WebSocket closed by server
+2025-10-28 21:54:05,348 INFO: Reconnecting in 3.4 seconds...
+Connection failed with an unhandled exception: no close frame received or sent
+Traceback (most recent call last):
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 463, in finish_socket_func
+    return ov.getresult()
+           ~~~~~~~~~~~~^^
+OSError: [WinError 64] The specified network name is no longer available
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python313\Lib\site-packages\websockets\legacy\protocol.py", line 953, in transfer_data
+    message = await self.read_message()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python313\Lib\site-packages\websockets\legacy\protocol.py", line 1023, in read_message
+    frame = await self.read_data_frame(max_size=self.max_size)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python313\Lib\site-packages\websockets\legacy\protocol.py", line 1098, in read_data_frame
+    frame = await self.read_frame(max_size)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python313\Lib\site-packages\websockets\legacy\protocol.py", line 1155, in read_frame
+    frame = await Frame.read(
+            ^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python313\Lib\site-packages\websockets\legacy\framing.py", line 70, in read
+    data = await reader(2)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 769, in readexactly
+    await self._wait_for_data('readexactly')
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 539, in _wait_for_data
+    await self._waiter
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 286, in _loop_reading
+    length = fut.result()
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 467, in finish_socket_func
+    raise ConnectionResetError(*exc.args)
+ConnectionResetError: [WinError 64] The specified network name is no longer available
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\austi\ArchipelagoTest\worlds\L4D2\ThirdPartyProgramStuff\ap_companion.py", line 145, in connect_to_archipelago
+  File "C:\Users\austi\ArchipelagoTest\worlds\L4D2\ThirdPartyProgramStuff\ap_companion.py", line 123, in main_loop
+    # Check and send any pending game events each loop iteration.
+  File "C:\Users\austi\ArchipelagoTest\worlds\L4D2\ThirdPartyProgramStuff\ap_companion.py", line 87, in handle_game_events
+    await send_packet(websocket, location_packet)
+  File "C:\Users\austi\ArchipelagoTest\worlds\L4D2\ThirdPartyProgramStuff\ap_companion.py", line 29, in send_packet
+    await websocket.send(json.dumps(packet))
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python313\Lib\site-packages\websockets\legacy\protocol.py", line 628, in send
+    await self.ensure_open()
+  File "C:\Users\austi\AppData\Local\Programs\Python\Python313\Lib\site-packages\websockets\legacy\protocol.py", line 929, in ensure_open
+    raise self.connection_closed_exc()
+websockets.exceptions.ConnectionClosedError: no close frame received or sent

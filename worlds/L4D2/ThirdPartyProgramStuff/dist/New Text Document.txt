@@ -1,0 +1,6 @@
+# replace 63658 with the actual port printed by the client (no $PID variable)
+Get-NetTCPConnection -LocalPort 63690 | Select-Object LocalAddress,LocalPort,RemoteAddress,RemotePort,State,OwningProcess
+
+# then show the process command line
+(Get-CimInstance Win32_Process -Filter "ProcessId=$((Get-NetTCPConnection -LocalPort 63690).OwningProcess)") |
+  Select-Object ProcessId,Name,CommandLine | Format-List
