@@ -38,21 +38,29 @@ Comparison of L4D2 world implementation against Archipelago documentation guidel
 
 ### **init**.py - Massive Match Statement
 
-- **Issue**: Lines 155-317 contain huge `match` statement for item classification
+- **Status**: ✅ COMPLETED - Refactored from 162 lines to 11 lines using dictionary mapping
+- **Issue**: Lines 155-317 contained huge `match` statement for item classification
 - **Problems**:
   - 162 lines of repetitive case statements
   - Hard to maintain (every new item needs a new case)
   - Not data-driven
-- **Suggestion**: Create classification dict/mapping:
+- **Solution**: Created `ITEM_CLASSIFICATIONS` dictionary mapping at top of file
+- **Result**: ~64 lines saved (15% reduction in file size)
 
-  ```python
-  CLASSIFICATIONS = {
-      ItemClassification.progression: {"Dead Center", "The Passing", ...},
-      ItemClassification.useful: {"First Aid Kit", "Defib", ...},
-      ItemClassification.filler: {"Scout", "AWP", "Glock", ...},
-      ItemClassification.trap: {"Trap: Boomer", "Trap: Hunter", ...},
-  }
-  ```
+**Before**:
+
+```python
+match name:
+    case "Pump Shotgun":
+        classification = ItemClassification.useful
+    # ... 160 more lines ...
+```
+
+**After**:
+
+```python
+classification = ITEM_CLASSIFICATIONS[name]
+```
 
 ### Rules.py - API Usage
 
@@ -196,7 +204,7 @@ Comparison of L4D2 world implementation against Archipelago documentation guidel
 2. Create setup guide (`setup_en.md`)
 3. Add unit tests
 4. Fix option_groups connection to WebWorld
-5. Refactor massive match statement in **init**.py
+5. ✅ ~~Refactor massive match statement in **init**.py~~ (COMPLETED)
 
 ### Medium Priority (Code quality)
 
