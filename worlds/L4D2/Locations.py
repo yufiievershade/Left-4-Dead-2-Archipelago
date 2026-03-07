@@ -1,4 +1,4 @@
-from typing import Dict, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 # You need to import the BaseClasses.py from Archipelago's core
 from .Types import LocData
@@ -43,7 +43,7 @@ EXTRA_LOCATIONS = [
 ]
 
 
-def generate_location_table() -> Dict[str, LocData]:
+def generate_location_table() -> dict[str, LocData]:
     """Generate the complete location table from campaign definitions."""
     table = {}
     location_id = 0
@@ -56,38 +56,24 @@ def generate_location_table() -> Dict[str, LocData]:
             for survivor in survivors:
                 loc_name = f"{campaign_name} - Safe Room {room_num}({survivor})"
                 table[loc_name] = LocData(
-                    base_id + location_id,
-                    loc_name,
-                    "Progression"
+                    base_id + location_id, loc_name, "Progression"
                 )
                 location_id += 1
 
         # Generate finale locations
         for survivor in survivors:
             loc_name = f"{campaign_name} - {finale_name} Finale({survivor})"
-            table[loc_name] = LocData(
-                base_id + location_id,
-                loc_name,
-                "Progression"
-            )
+            table[loc_name] = LocData(base_id + location_id, loc_name, "Progression")
             location_id += 1
 
     # Add special single locations
     for loc_name, loc_type in SPECIAL_LOCATIONS:
-        table[loc_name] = LocData(
-            base_id + location_id,
-            loc_name,
-            loc_type
-        )
+        table[loc_name] = LocData(base_id + location_id, loc_name, loc_type)
         location_id += 1
 
     # Add extra locations
     for loc_name, loc_type in EXTRA_LOCATIONS:
-        table[loc_name] = LocData(
-            base_id + location_id,
-            loc_name,
-            loc_type
-        )
+        table[loc_name] = LocData(base_id + location_id, loc_name, loc_type)
         location_id += 1
 
     return table
@@ -113,5 +99,5 @@ def get_total_locations(world: "L4D2World") -> int:
     return total
 
 
-def get_location_names() -> Dict[str, int]:
+def get_location_names() -> dict[str, int]:
     return {name: loc_data.code for name, loc_data in location_table.items()}

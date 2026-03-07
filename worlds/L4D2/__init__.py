@@ -1,6 +1,5 @@
 from BaseClasses import MultiWorld, Item, Tutorial, ItemClassification
 from worlds.AutoWorld import World, CollectionState, WebWorld
-from typing import Dict
 from .Items import (
     unique_item_dict,
     useful_items,
@@ -9,9 +8,9 @@ from .Items import (
     trap_items,
 )
 from .Locations import get_location_names, get_total_locations
-from .Options import L4D2Options
+from .Options import L4D2Options, l4d2_option_groups
 from .Regions import create_regions
-from .Types import APSkeletonItem
+from .Types import APSkeletonItem, CAMPAIGNS, L4D1_CAMPAIGNS
 
 
 # Item classifications for create_item method
@@ -147,6 +146,7 @@ class L4D2Web(WebWorld):
     """WebWorld configuration for Left 4 Dead 2."""
 
     theme = "Party"
+    option_groups = l4d2_option_groups
 
     tutorials = [
         Tutorial(
@@ -180,34 +180,16 @@ class L4D2World(World):
     @property
     def win_condition(self):
         """Determine the win condition based on the goal option."""
-        # A list of the items that count towards campaign completion
-        campaign_items = (
-            "Dead Center",
-            "The Passing",
-            "Dark Carnival",
-            "Swamp Fever",
-            "Hard Rain",
-            "The Parish",
-            "Cold Stream",
-            "The Sacrifice",
-            "No Mercy",
-            "Crash Course",
-            "Death Toll",
-            "Dead Air",
-            "Blood Harvest",
-            "The Last Stand",
-        )
-
         # Win condition for collecting the specified number of campaigns
         required_campaigns = self.options.goal.value
 
-        if required_campaigns >= len(campaign_items):
+        if required_campaigns >= len(CAMPAIGNS):
             # If goal is 14 or more, require all campaigns
-            return lambda state: state.has_all(campaign_items, self.player)
+            return lambda state: state.has_all(CAMPAIGNS, self.player)
         else:
             # Otherwise, require the specified number of any campaigns
             return lambda state: state.has_any(
-                campaign_items, self.player, required_campaigns
+                CAMPAIGNS, self.player, required_campaigns
             )
 
     def create_regions(self) -> None:
@@ -219,39 +201,12 @@ class L4D2World(World):
         self.preplaced_prog = []
 
         if self.multiworld.players == 1:
-            campaign_names = [
-                "Dead Center",
-                "The Passing",
-                "Dark Carnival",
-                "Swamp Fever",
-                "Hard Rain",
-                "The Parish",
-                "Cold Stream",
-                "The Sacrifice",
-                "No Mercy",
-                "Crash Course",
-                "Death Toll",
-                "Dead Air",
-                "Blood Harvest",
-                "The Last Stand",
-            ]
-
             prog_items = list(progression_items.keys())
             self.multiworld.random.shuffle(prog_items)
 
-            l4d1_campaigns = [
-                "No Mercy",
-                "Crash Course",
-                "Death Toll",
-                "Dead Air",
-                "Blood Harvest",
-                "The Sacrifice",
-                "The Last Stand",
-            ]
-
-            for i, campaign in enumerate(campaign_names):
+            for i, campaign in enumerate(CAMPAIGNS):
                 # Determine which character to use based on campaign
-                character = "Bill" if campaign in l4d1_campaigns else "Coach"
+                character = "Bill" if campaign in L4D1_CAMPAIGNS else "Coach"
 
                 # Build location name and get the location object
                 location_name = f"{campaign} - Safe Room 1({character})"
@@ -278,9 +233,9 @@ class L4D2World(World):
 
         return APSkeletonItem(name, ITEM_CLASSIFICATIONS[name], item_id, self.player)
 
-    def fill_slot_data(self) -> Dict[str, object]:
+    def fill_slot_data(self) -> dict[str, object]:
         """Fill slot data for the client to receive on connection."""
-        slot_data: Dict[str, object] = {
+        slot_data: dict[str, object] = {
             "options": {
                 "L4D2DeathLink": self.options.death_link.value,
                 "StartWithCampaign": self.options.starting_campaign.value,
@@ -347,3 +302,10 @@ class L4D2World(World):
     def remove(self, state: "CollectionState", item: "Item") -> bool:
         """Remove an item and update the collection state."""
         return super().remove(state, item)
+
+    def get_filler_item_name(self) -> str:
+        """Return the name of a filler item for padding the item pool.
+
+        Returns a random junk item (broken/useless items or bad weapons).
+        """
+        return self.random.choice(list(junk_items.keys()))

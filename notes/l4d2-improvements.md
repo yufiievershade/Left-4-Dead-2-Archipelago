@@ -26,15 +26,23 @@ Comparison of L4D2 world implementation against Archipelago documentation guidel
 
 ### Items.py - Major Refactoring Opportunity
 
-- **Current State**: 181 lines of repetitive dictionary definitions
-- **Issues**:
-  - Hardcoded IDs with manual arithmetic (`base_id + 1`, `base_id + 2`, etc.)
-  - Manual list appends for quantities (`["Dead Center"] * 1`, `["First Aid Kit"] * 5`)
-  - No data-driven structure
-- **Suggestion**: Similar to Locations refactor, use:
-  - Data structures with item data (name, base quantity, classification)
-  - Generator functions to build dictionaries and item pools
-  - Estimated reduction: ~70% fewer lines
+- **Status**: ✅ COMPLETED - Refactored to data-driven structure
+- **Current State**: 181 lines → 205 lines, but now includes populated `item_groups`
+- **Issues Resolved**:
+  - ✅ Hardcoded IDs → Auto-generated sequential IDs via `ITEM_DEFINITIONS`
+  - ✅ Manual list appends → Generator function `_generate_full_item_list()`
+  - ✅ No data structure → `ITEM_DEFINITIONS` list with (name, category, quantity)
+- **Bonus**: Populated `item_groups` with logical categories (weapons, medical, campaigns, traps, etc.)
+- **Result**: More maintainable, easier to add/modify items
+
+**New Structure**:
+```python
+ITEM_DEFINITIONS = [
+    ("Dead Center", "progression", 1),
+    ("First Aid Kit", "useful", 5),
+    # ... auto-generates dictionaries and item pool
+]
+```
 
 ### **init**.py - Massive Match Statement
 
@@ -64,25 +72,36 @@ classification = ITEM_CLASSIFICATIONS[name]
 
 ### Rules.py - API Usage
 
-- **Issue**: Uses `MultiWorld.get_entrance()` and `MultiWorld.get_location()` instead of `world.multiworld`
-- **Problem**: Accessing through class name rather than instance
-- **Suggestion**: Use `multiworld.get_entrance()` through proper instance access
+- **Status**: ✅ COMPLETED - Fixed to use proper instance access
+- **Issue**: Used `MultiWorld.get_entrance()` and `MultiWorld.get_location()` through class
+- **Solution**: Now uses `world.multiworld.get_entrance()` and `world.multiworld.get_location()`
+- **Also Fixed**: `multiworld.completion_condition[player]` instead of `MultiWorld.completion_condition[player]`
 
 ## Incomplete Features
 
 ### Option Groups Not Connected
 
-- **Issue**: `l4d2_option_groups` defined in `Options.py` but never assigned to WebWorld
-- **Doc Reference**: [world api.md#webworld-class] - option_groups for better organization on webhost
-- **Current**: Groups exist in Options.py but not referenced in **init**.py
-- **Fix**: Add `option_groups = l4d2_option_groups` to L4D2Web class
+- **Status**: ✅ COMPLETED - Connected to WebWorld
+- **Before**: `l4d2_option_groups` defined in Options.py but never assigned
+- **Fix**: Added `option_groups = l4d2_option_groups` to L4D2Web class in __init__.py
+- **Result**: Options now organized into groups on webhost:
+  - General: StartWithCampaign, AllCampaignsStart, L4D2DeathLink
+  - Goal: L4D2Goal
+  - Traps: TrapItemCount
 
 ### Item Name Groups Empty
 
-- **Issue**: `item_groups = {}` defined but never populated
-- **Doc Reference**: [world api.md#world-class-skeleton] - "Items can be grouped using their names"
-- **Suggestion**: Group items logically:
-  - Weapons, Medical Items, Campaigns, Traps, etc.
+- **Status**: ✅ COMPLETED - Populated during Items.py refactor
+- **Before**: `item_groups = {}` (empty dict)
+- **After**: Populated with logical groups:
+  - `weapons`: All firearms and pistols
+  - `melee_weapons`: All melee weapons
+  - `medical`: Medkits, pills, defibs, etc.
+  - `throwables`: Molotov, pipe bombs, bile bombs
+  - `campaigns`: All 14 campaign items
+  - `traps`: All 8 special infected traps
+  - `junk`: Broken/useless items
+  - `scavenge`: Gas cans, propane tanks, etc.
 - **Benefit**: Enables `!hint` group syntax and better organization
 
 ### Bug Report Page Missing
@@ -93,10 +112,9 @@ classification = ITEM_CLASSIFICATIONS[name]
 
 ### Missing get_filler_item_name
 
-- **Issue**: No implementation of `get_filler_item_name()` method
-- **Doc Reference**: [adding games.md#encouraged-features]
-- **Current**: Will pick any random item from item_name_to_id
-- **Suggestion**: Implement to limit to true filler items only
+- **Status**: ✅ COMPLETED - Implemented in L4D2World class
+- **Implementation**: Returns random item from `junk_items` (broken weapons, useless items)
+- **Benefit**: Archipelago now uses proper filler items instead of any random item
 
 ## Style Guide Violations
 
@@ -108,12 +126,12 @@ classification = ITEM_CLASSIFICATIONS[name]
 
 ### Type Annotations
 
-- **Issue**: Old-style imports (`typing.Dict`, `typing.List`, `typing.Any`)
-- **Doc Reference**: [style.md#python-code] - "Prefer new style type annotations"
-- **Locations**:
-  - `Options.py`: `from typing import List, Dict, Any`
-  - `__init__.py`: `from typing import Dict, Any, List`
-- **Suggestion**: Use `dict[str, ...]`, `list[...]` instead
+- **Status**: ✅ COMPLETED - Converted old-style typing imports to new style
+- **Changes Made**:
+  - `Options.py`: `Dict[str, List[Any]]` → `dict[str, list[Any]]`
+  - `Locations.py`: `Dict[str, LocData]` → `dict[str, LocData]`, `Dict[str, int]` → `dict[str, int]`
+  - `__init__.py`: `Dict[str, object]` → `dict[str, object]`
+- **Result**: Uses Python 3.9+ built-in generic types as recommended by Archipelago style guide
 
 ### Line Length
 
@@ -159,13 +177,14 @@ classification = ITEM_CLASSIFICATIONS[name]
 
 ### Duplicate Campaign Lists
 
-- **Issue**: Campaign names hardcoded in multiple places:
-  - `Items.py` progression_items dict
-  - `__init__.py` win_condition property
-  - `__init__.py` create_regions method
-  - `Rules.py` campaign_names list
-- **Suggestion**: Define once in `Types.py` or `Locations.py` as source of truth
-- **Benefit**: Single point of maintenance, prevents drift
+- **Status**: ✅ COMPLETED - Extracted to single source of truth in `Types.py`
+- **Issue**: Campaign names hardcoded in 4 different places:
+  - `Items.py` - ITEM_DEFINITIONS (now uses `CAMPAIGNS`)
+  - `__init__.py` win_condition (now uses `CAMPAIGNS`)
+  - `__init__.py` create_regions (now uses `CAMPAIGNS` and `L4D1_CAMPAIGNS`)
+  - `Rules.py` campaign_names list (now uses `CAMPAIGNS`)
+- **Solution**: Created `CAMPAIGNS` and `L4D1_CAMPAIGNS` tuples in `Types.py`
+- **Benefit**: Single point of maintenance - change one place, updates everywhere
 
 ### Location Naming Inconsistency
 
@@ -203,16 +222,16 @@ classification = ITEM_CLASSIFICATIONS[name]
 1. Create game info doc (`en_Left 4 Dead 2.md`)
 2. Create setup guide (`setup_en.md`)
 3. Add unit tests
-4. Fix option_groups connection to WebWorld
-5. ✅ ~~Refactor massive match statement in **init**.py~~ (COMPLETED)
+4. ✅ ~~Fix option_groups connection to WebWorld~~ (COMPLETED)
+5. ✅ ~~Refactor massive match statement in __init__.py~~ (COMPLETED)
 
 ### Medium Priority (Code quality)
 
-1. Refactor Items.py to be data-driven
-2. Add item_name_groups
+1. ✅ ~~Refactor Items.py to be data-driven~~ (COMPLETED)
+2. ✅ ~~Add item_name_groups~~ (COMPLETED - done during Items.py refactor)
 3. Add item/location descriptions
-4. Implement get_filler_item_name()
-5. Fix type annotations (old-style imports)
+4. ✅ ~~Implement get_filler_item_name()~~ (COMPLETED)
+5. ✅ ~~Fix type annotations (old-style imports)~~ (COMPLETED)
 
 ### Low Priority (Nice to have)
 
@@ -221,7 +240,7 @@ classification = ITEM_CLASSIFICATIONS[name]
 3. Add Settings support
 4. Standardize string quotes
 5. Add proper docstrings
-6. Extract campaign list to single source
+6. ✅ ~~Extract campaign list to single source~~ (COMPLETED)
 
 ## Next Steps
 

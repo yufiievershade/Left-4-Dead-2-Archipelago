@@ -7,6 +7,37 @@ from typing import NamedTuple, Optional
 from BaseClasses import Location, Item, ItemClassification
 
 
+# Campaign names in canonical order
+# This is the single source of truth for all campaign-related logic
+CAMPAIGNS = (
+    "Dead Center",
+    "The Passing",
+    "Dark Carnival",
+    "Swamp Fever",
+    "Hard Rain",
+    "The Parish",
+    "Cold Stream",
+    "The Sacrifice",
+    "No Mercy",
+    "Crash Course",
+    "Death Toll",
+    "Dead Air",
+    "Blood Harvest",
+    "The Last Stand",
+)
+
+# L4D1 campaigns (for character selection logic)
+L4D1_CAMPAIGNS = (
+    "No Mercy",
+    "Crash Course",
+    "Death Toll",
+    "Dead Air",
+    "Blood Harvest",
+    "The Sacrifice",
+    "The Last Stand",
+)
+
+
 # These 2 make it so that the generic Location and Item types are more specific for your game
 class L4D2Location(Location):
     game = "Left 4 Dead 2"

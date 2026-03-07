@@ -1,4 +1,4 @@
-from typing import List, Dict, Any
+from typing import Any
 from dataclasses import dataclass
 from Options import Choice, Toggle, Range, PerGameCommonOptions
 
@@ -78,7 +78,7 @@ class L4D2Options(PerGameCommonOptions):
 
 
 # Organize your options into groups
-l4d2_option_groups: Dict[str, List[Any]] = {
+l4d2_option_groups: dict[str, list[Any]] = {
     "General": [StartWithCampaign, AllCampaignsStart, L4D2DeathLink],
     "Goal": [L4D2Goal],
     "Traps": [TrapItemCount],
