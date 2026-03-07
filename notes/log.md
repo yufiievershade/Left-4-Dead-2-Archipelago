@@ -2,6 +2,17 @@
 
 ## 2026-03-06
 
+### General
+
+- [ ] Refactor AP world to be pythonic.
+- [ ] Read through the docs, compare to where we're currently at.
+  - [docs-guide.md](/notes/docs%20guide.md)
+- [ ] Investigate the current state of our testing.
+- [ ] Figure out how to run this.
+- [ ] Produce a robust readme explaining how to get this world working on windows and linux.
+
+### From Yufii
+
 - [ ] Death Link implementation.
   - Ensure death link functionality works correctly.
 - [ ] Campaign finale check logic.
