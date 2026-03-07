@@ -1,0 +1,8 @@
+# L4D2 mod data directory (contains runtime logs and events)
+ThirdPartyProgramStuff/mod_data/
+
+# L4D2 build artifacts
+ThirdPartyProgramStuff/build/
+
+# L4D2 distribution/build outputs
+ThirdPartyProgramStuff/dist/

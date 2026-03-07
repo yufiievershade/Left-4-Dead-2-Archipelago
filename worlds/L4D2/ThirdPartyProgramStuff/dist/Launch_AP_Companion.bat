@@ -1,6 +1,0 @@
-@echo off
-echo Starting Archipelago Companion App for Left 4 Dead 2...
-echo Redirecting output to ap_log.txt...
-echo.
-ap_companion_clean.exe > ap_log.txt 2>&1
-pause

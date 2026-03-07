@@ -6,12 +6,15 @@ from enum import IntEnum
 from typing import NamedTuple, Optional
 from BaseClasses import Location, Item, ItemClassification
 
+
 # These 2 make it so that the generic Location and Item types are more specific for your game
 class L4D2Location(Location):
     game = "Left 4 Dead 2"
 
+
 class APSkeletonItem(Item):
     game = "Left 4 Dead 2"
+
 
 # I use these next 2 to convert the number you get from the options into a name
 # Mainly used in Items.py for starting chapter
@@ -32,21 +35,22 @@ class ChapterType(IntEnum):
     ColdStream = 13
     TheLastStand = 14
 
+
 chapter_type_to_name = {
-    ChapterType.DeadCenter:    "Campaign: Dead Center",
-    ChapterType.ThePassing:    "Campaign: The Passing",
-    ChapterType.DarkCarnival:  "Campaign: Dark Carnival",
-    ChapterType.SwampFever:    "Campaign: Swamp Fever",
-    ChapterType.HardRain:      "Campaign: Hard Rain",
-    ChapterType.TheParish:     "Campaign: The Parish",
-    ChapterType.TheSacrifice:  "Campaign: The Sacrifice",
-    ChapterType.NoMercy:       "Campaign: No Mercy",
-    ChapterType.CrashCourse:   "Campaign: Crash Course",
-    ChapterType.DeathToll:     "Campaign: Death Toll",
-    ChapterType.DeadAir:       "Campaign: Dead Air",
-    ChapterType.BloodHarvest:  "Campaign: Blood Harvest",
-    ChapterType.ColdStream:  "Campaign: Cold Stream",
-    ChapterType.TheLastStand:    "Campaign: The Last Stand",
+    ChapterType.DeadCenter: "Campaign: Dead Center",
+    ChapterType.ThePassing: "Campaign: The Passing",
+    ChapterType.DarkCarnival: "Campaign: Dark Carnival",
+    ChapterType.SwampFever: "Campaign: Swamp Fever",
+    ChapterType.HardRain: "Campaign: Hard Rain",
+    ChapterType.TheParish: "Campaign: The Parish",
+    ChapterType.TheSacrifice: "Campaign: The Sacrifice",
+    ChapterType.NoMercy: "Campaign: No Mercy",
+    ChapterType.CrashCourse: "Campaign: Crash Course",
+    ChapterType.DeathToll: "Campaign: Death Toll",
+    ChapterType.DeadAir: "Campaign: Dead Air",
+    ChapterType.BloodHarvest: "Campaign: Blood Harvest",
+    ChapterType.ColdStream: "Campaign: Cold Stream",
+    ChapterType.TheLastStand: "Campaign: The Last Stand",
 }
 
 
@@ -58,6 +62,7 @@ class ItemData(NamedTuple):
     ap_code: Optional[int]
     classification: ItemClassification
     count: Optional[int] = 63
+
 
 # Again where all the Location.py things come from
 # You can add whatever you want here as well but ap_code and region are pretty important

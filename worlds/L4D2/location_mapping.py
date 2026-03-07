@@ -27,7 +27,6 @@ LOCATION_MAP = {
     ("c1m4_atrium", "coach"): BASE_ID + 14,
     ("c1m4_atrium", "nick"): BASE_ID + 15,
     ("c1m2_streets", "cola_bottles"): BASE_ID + 16,
-    
     # The Passing
     ("c6m1_riverbank", "ellis"): BASE_ID + 17,
     ("c6m1_riverbank", "rochelle"): BASE_ID + 18,
@@ -41,7 +40,6 @@ LOCATION_MAP = {
     ("c6m3_port", "rochelle"): BASE_ID + 26,
     ("c6m3_port", "coach"): BASE_ID + 27,
     ("c6m3_port", "nick"): BASE_ID + 28,
-    
     # Dark Carnival
     ("c2m1_highway", "ellis"): BASE_ID + 29,
     ("c2m1_highway", "rochelle"): BASE_ID + 30,
@@ -63,7 +61,6 @@ LOCATION_MAP = {
     ("c2m5_concert", "rochelle"): BASE_ID + 46,
     ("c2m5_concert", "coach"): BASE_ID + 47,
     ("c2m5_concert", "nick"): BASE_ID + 48,
-    
     # Swamp Fever
     ("c3m1_plankcountry", "ellis"): BASE_ID + 49,
     ("c3m1_plankcountry", "rochelle"): BASE_ID + 50,
@@ -81,7 +78,6 @@ LOCATION_MAP = {
     ("c3m4_plantation", "rochelle"): BASE_ID + 62,
     ("c3m4_plantation", "coach"): BASE_ID + 63,
     ("c3m4_plantation", "nick"): BASE_ID + 64,
-    
     # Hard Rain
     ("c4m1_milltown_a", "ellis"): BASE_ID + 65,
     ("c4m1_milltown_a", "rochelle"): BASE_ID + 66,
@@ -103,7 +99,6 @@ LOCATION_MAP = {
     ("c4m5_milltown_escape", "rochelle"): BASE_ID + 82,
     ("c4m5_milltown_escape", "coach"): BASE_ID + 83,
     ("c4m5_milltown_escape", "nick"): BASE_ID + 84,
-    
     # The Parish
     ("c5m1_waterfront", "ellis"): BASE_ID + 85,
     ("c5m1_waterfront", "rochelle"): BASE_ID + 86,
@@ -125,7 +120,6 @@ LOCATION_MAP = {
     ("c5m5_bridge", "rochelle"): BASE_ID + 102,
     ("c5m5_bridge", "coach"): BASE_ID + 103,
     ("c5m5_bridge", "nick"): BASE_ID + 104,
-    
     # The Sacrifice
     ("c7m1_docks", "francis"): BASE_ID + 105,
     ("c7m1_docks", "bill"): BASE_ID + 106,
@@ -139,7 +133,6 @@ LOCATION_MAP = {
     ("c7m3_port", "bill"): BASE_ID + 114,
     ("c7m3_port", "zoey"): BASE_ID + 115,
     ("c7m3_port", "louis"): BASE_ID + 116,
-    
     # No Mercy
     ("c8m1_apartment", "francis"): BASE_ID + 117,
     ("c8m1_apartment", "bill"): BASE_ID + 118,
@@ -161,7 +154,6 @@ LOCATION_MAP = {
     ("c8m5_rooftop", "bill"): BASE_ID + 134,
     ("c8m5_rooftop", "zoey"): BASE_ID + 135,
     ("c8m5_rooftop", "louis"): BASE_ID + 136,
-    
     # Crash Course
     ("c9m1_alleys", "francis"): BASE_ID + 137,
     ("c9m1_alleys", "bill"): BASE_ID + 138,
@@ -171,7 +163,6 @@ LOCATION_MAP = {
     ("c9m2_lots", "bill"): BASE_ID + 142,
     ("c9m2_lots", "zoey"): BASE_ID + 143,
     ("c9m2_lots", "louis"): BASE_ID + 144,
-    
     # Death Toll
     ("c10m1_caves", "francis"): BASE_ID + 145,
     ("c10m1_caves", "bill"): BASE_ID + 146,
@@ -193,7 +184,6 @@ LOCATION_MAP = {
     ("c10m5_houseboat", "bill"): BASE_ID + 162,
     ("c10m5_houseboat", "zoey"): BASE_ID + 163,
     ("c10m5_houseboat", "louis"): BASE_ID + 164,
-    
     # Dead Air
     ("c11m1_greenhouse", "francis"): BASE_ID + 165,
     ("c11m1_greenhouse", "bill"): BASE_ID + 166,
@@ -215,7 +205,6 @@ LOCATION_MAP = {
     ("c11m5_runway", "bill"): BASE_ID + 182,
     ("c11m5_runway", "zoey"): BASE_ID + 183,
     ("c11m5_runway", "louis"): BASE_ID + 184,
-    
     # Blood Harvest
     ("c12m1_hilltop", "francis"): BASE_ID + 185,
     ("c12m1_hilltop", "bill"): BASE_ID + 186,
@@ -237,7 +226,6 @@ LOCATION_MAP = {
     ("c12m5_cornfield", "bill"): BASE_ID + 202,
     ("c12m5_cornfield", "zoey"): BASE_ID + 203,
     ("c12m5_cornfield", "louis"): BASE_ID + 204,
-    
     # Cold Stream
     ("c13m1_alpinecreek", "ellis"): BASE_ID + 205,
     ("c13m1_alpinecreek", "rochelle"): BASE_ID + 206,
@@ -255,7 +243,6 @@ LOCATION_MAP = {
     ("c13m4_cutthroatcreek", "rochelle"): BASE_ID + 218,
     ("c13m4_cutthroatcreek", "coach"): BASE_ID + 219,
     ("c13m4_cutthroatcreek", "nick"): BASE_ID + 220,
-    
     # The Last Stand
     ("c14m1_junkyard", "francis"): BASE_ID + 221,
     ("c14m1_junkyard", "bill"): BASE_ID + 222,
@@ -265,17 +252,18 @@ LOCATION_MAP = {
     ("c14m2_lighthouse", "bill"): BASE_ID + 226,
     ("c14m2_lighthouse", "zoey"): BASE_ID + 227,
     ("c14m2_lighthouse", "louis"): BASE_ID + 228,
-    
     # Extra Locations - Dark Carnival minigames
     ("c2m2_fairgrounds", "moustachio_strength"): BASE_ID + 229,
     ("c2m3_coaster", "moustachio_whack"): BASE_ID + 230,
     ("c2m1_highway", "gnome_chompski"): BASE_ID + 231,
 }
 
+
 def get_location_id(map_name, character_name):
     """Get location ID for a map and character combination"""
     key = (map_name, character_name.lower())
     return LOCATION_MAP.get(key)
+
 
 def get_all_location_ids():
     """Get all location IDs"""

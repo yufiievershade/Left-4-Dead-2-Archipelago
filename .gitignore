@@ -200,6 +200,3 @@ Thumbs.db
 # Log files
 error.log
 *.log
-
-# L4D2 mod data directory (contains runtime logs and events)
-worlds/L4D2/ThirdPartyProgramStuff/mod_data/

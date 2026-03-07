@@ -2,11 +2,21 @@ import logging
 from BaseClasses import MultiWorld, Item, Tutorial, ItemClassification
 from worlds.AutoWorld import World, CollectionState, WebWorld
 from typing import Dict, Any, List
-from .Items import base_id, full_item_list, unique_item_dict, useful_items, junk_items, progression_items, trap_items, item_groups
+from .Items import (
+    base_id,
+    full_item_list,
+    unique_item_dict,
+    useful_items,
+    junk_items,
+    progression_items,
+    trap_items,
+    item_groups,
+)
 from .Locations import get_location_names, get_total_locations
 from .Options import L4D2Options, L4D2Goal
 from .Regions import create_regions
 from .Types import ItemData, APSkeletonItem
+
 
 # This is where you setup the page on the site!
 # Typically is the name of your game with web
@@ -14,17 +24,20 @@ from .Types import ItemData, APSkeletonItem
 class L4D2Web(WebWorld):
     # Theres a few different themes so have fun with it
     theme = "Party"
-    
+
     # You shouldnt have to change much here except the name at the bottom!
-    tutorials = [Tutorial(
-        "Multiworld Setup Guide",
-        "A guide to setting up (the game you are randomizing) for Archipelago. "
-        "This guide covers single-player, multiworld, and related software.",
-        "English",
-        "setup_en.md",
-        "setup/en",
-        ["Yufii"]
-    )]
+    tutorials = [
+        Tutorial(
+            "Multiworld Setup Guide",
+            "A guide to setting up (the game you are randomizing) for Archipelago. "
+            "This guide covers single-player, multiworld, and related software.",
+            "English",
+            "setup_en.md",
+            "setup/en",
+            ["Yufii"],
+        )
+    ]
+
 
 # This class is the real meat and potatoes
 # Same as the first class its normally named whatever you named your folder with World at the end
@@ -39,7 +52,7 @@ class L4D2World(World):
     item_name_to_id = unique_item_dict
     # get_location_names() will come from your Locations.py
     location_name_to_id = get_location_names()
-    # And these 2 are the name of your Options.py class. 
+    # And these 2 are the name of your Options.py class.
     options_dataclass = L4D2Options
     options = L4D2Options
     # The name of the class above
@@ -56,9 +69,22 @@ class L4D2World(World):
     @property
     def win_condition(self):
         # A list of the items that count towards campaign completion.
-        campaign_items = ("Dead Center", "The Passing", "Dark Carnival", "Swamp Fever", "Hard Rain",
-        "The Parish", "Cold Stream", "The Sacrifice", "No Mercy", "Crash Course",
-        "Death Toll", "Dead Air", "Blood Harvest", "The Last Stand")
+        campaign_items = (
+            "Dead Center",
+            "The Passing",
+            "Dark Carnival",
+            "Swamp Fever",
+            "Hard Rain",
+            "The Parish",
+            "Cold Stream",
+            "The Sacrifice",
+            "No Mercy",
+            "Crash Course",
+            "Death Toll",
+            "Dead Air",
+            "Blood Harvest",
+            "The Last Stand",
+        )
 
         # Win condition for collecting the specified number of campaigns
         required_campaigns = self.options.goal.value
@@ -67,7 +93,9 @@ class L4D2World(World):
             return lambda state: state.has_all(campaign_items, self.player)
         else:
             # Otherwise, require the specified number of any campaigns
-            return lambda state: state.has_any(campaign_items, self.player, required_campaigns)
+            return lambda state: state.has_any(
+                campaign_items, self.player, required_campaigns
+            )
 
     # Regions are the different locations in your world. So like Undead Burgh in dark souls or Pacifilog Town in pokemon
     # They dont have to match your game, they can be whatever you need them to be for organization
@@ -77,10 +105,33 @@ class L4D2World(World):
         # Solo play: guarantee one progression per campaign
         self.preplaced_prog = []
         if self.multiworld.players == 1:
-            campaign_names = ["Dead Center", "The Passing", "Dark Carnival", "Swamp Fever", "Hard Rain", "The Parish", "Cold Stream", "The Sacrifice", "No Mercy", "Crash Course", "Death Toll", "Dead Air", "Blood Harvest", "The Last Stand"]
+            campaign_names = [
+                "Dead Center",
+                "The Passing",
+                "Dark Carnival",
+                "Swamp Fever",
+                "Hard Rain",
+                "The Parish",
+                "Cold Stream",
+                "The Sacrifice",
+                "No Mercy",
+                "Crash Course",
+                "Death Toll",
+                "Dead Air",
+                "Blood Harvest",
+                "The Last Stand",
+            ]
             prog_items = list(progression_items.keys())
             self.multiworld.random.shuffle(prog_items)
-            l4d1_campaigns = ["No Mercy", "Crash Course", "Death Toll", "Dead Air", "Blood Harvest", "The Sacrifice", "The Last Stand"]
+            l4d1_campaigns = [
+                "No Mercy",
+                "Crash Course",
+                "Death Toll",
+                "Dead Air",
+                "Blood Harvest",
+                "The Sacrifice",
+                "The Last Stand",
+            ]
             for i, campaign in enumerate(campaign_names):
                 character = "Bill" if campaign in l4d1_campaigns else "Coach"
                 location_name = f"{campaign} - Safe Room 1({character})"
@@ -94,16 +145,12 @@ class L4D2World(World):
         # Like if an option is enabled to add extra locations
         # Or the opposite, whatever it is. Just be careful that you arent duplicating locations
 
-
-
     # This is just a helper function for turning names into Items. You could do some other stuff here as well
     # ahit does similar if you want another look and bomb rush cyberfunk does it in a slightly different way by turning it into a specific item for that game
     # Again hopefully I do a better job of explaining the Items.py file
     def create_item(self, name: str) -> "APSkeletonItem":
         item_id: int = self.item_name_to_id[name]
         id = item_id - base_id
-
-
 
         match name:
             case "Pump Shotgun":
@@ -262,30 +309,36 @@ class L4D2World(World):
                 classification = ItemClassification.trap
             case "Dead Center":
                 classification = ItemClassification.progression
-            case _: # Should not occur
-                raise Exception("Unexpected case met: classification cannot be set for unknown item \"" + name + "\"")
+            case _:  # Should not occur
+                raise Exception(
+                    'Unexpected case met: classification cannot be set for unknown item "'
+                    + name
+                    + '"'
+                )
 
         return APSkeletonItem(name, classification, item_id, self.player)
-    
+
     # The slot data is what youre sending to the AP server kinda. You dont have to add all your options. Really you want the ones you think a pop tracker would use
     # Seed, Slot, and TotalLocations are all super important for AP though, you need those
     def fill_slot_data(self) -> Dict[str, object]:
         slot_data: Dict[str, object] = {
             "options": {
-                "L4D2DeathLink":            self.options.death_link.value,
-                "StartWithCampaign":           self.options.starting_campaign.value,
-                "AllCampaignsStart":               self.options.all_campaigns_start.value,
-                "L4D2Goal":       self.options.goal.value
+                "L4D2DeathLink": self.options.death_link.value,
+                "StartWithCampaign": self.options.starting_campaign.value,
+                "AllCampaignsStart": self.options.all_campaigns_start.value,
+                "L4D2Goal": self.options.goal.value,
             },
             "Seed": self.multiworld.seed_name,  # to verify the server's multiworld
             "Slot": self.multiworld.player_name[self.player],  # to connect to server
-            "TotalLocations": get_total_locations(self) # get_total_locations(self) comes from Locations.py
+            "TotalLocations": get_total_locations(
+                self
+            ),  # get_total_locations(self) comes from Locations.py
         }
         slot_data["item_name_to_id"] = self.item_name_to_id
         slot_data["location_name_to_id"] = self.location_name_to_id
 
         return slot_data
-    
+
     # These are used by AP to add and remove items from the player. You can probably just leave them alone
     def create_items(self) -> None:
         all_items = []
@@ -293,13 +346,47 @@ class L4D2World(World):
         for name in progression_items.keys():
             all_items.append(name)
         # Add useful items in tiers
-        high_priority = ["First Aid Kit", "Defib", "Pills", "Adrenaline", "Laser Sight", "Incendiary", "Explosive Ammo", "Molotov", "Pipe Bomb", "Bile Bomb", "Grenade Launcher", "M60"]
+        high_priority = [
+            "First Aid Kit",
+            "Defib",
+            "Pills",
+            "Adrenaline",
+            "Laser Sight",
+            "Incendiary",
+            "Explosive Ammo",
+            "Molotov",
+            "Pipe Bomb",
+            "Bile Bomb",
+            "Grenade Launcher",
+            "M60",
+        ]
         for name in high_priority:
             all_items += [name] * 5
-        medium_priority = ["Pump Shotgun", "Chrome Shotgun", "Submachine Gun", "Silenced Submachine Gun", "MP5", "Tactical Shotgun", "Combat Shotgun", "Hunting Rifle", "Sniper Rifle", "M-16", "Scar-H", "AK-47", "SG 552", "P220 Pistol", "Magnum", "Gnome Chompski"]
+        medium_priority = [
+            "Pump Shotgun",
+            "Chrome Shotgun",
+            "Submachine Gun",
+            "Silenced Submachine Gun",
+            "MP5",
+            "Tactical Shotgun",
+            "Combat Shotgun",
+            "Hunting Rifle",
+            "Sniper Rifle",
+            "M-16",
+            "Scar-H",
+            "AK-47",
+            "SG 552",
+            "P220 Pistol",
+            "Magnum",
+            "Gnome Chompski",
+        ]
         for name in medium_priority:
             all_items += [name] * 4
-        low_priority = [name for name in useful_items.keys() if name not in high_priority and name not in medium_priority]
+        low_priority = [
+            name
+            for name in useful_items.keys()
+            if name not in high_priority and name not in medium_priority
+        ]
         for name in low_priority:
             all_items += [name] * 3
         # Add base traps
@@ -319,14 +406,16 @@ class L4D2World(World):
         while len(all_items) < total_locations:
             all_items.append(self.multiworld.random.choice(junk_names))
         # Remove pre-placed progression items
-        if hasattr(self, 'preplaced_prog'):
+        if hasattr(self, "preplaced_prog"):
             for name in self.preplaced_prog:
                 all_items.remove(name)
         # Create items and add to pool
-        self.multiworld.itempool += [self.create_item(item_name) for item_name in all_items]
-    
+        self.multiworld.itempool += [
+            self.create_item(item_name) for item_name in all_items
+        ]
+
     def collect(self, state: "CollectionState", item: "Item") -> bool:
         return super().collect(state, item)
-    
+
     def remove(self, state: "CollectionState", item: "Item") -> bool:
         return super().remove(state, item)

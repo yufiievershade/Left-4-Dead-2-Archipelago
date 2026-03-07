@@ -11,7 +11,7 @@ L4D2_PATHS = [
     r"D:\SteamLibrary\steamapps\common\Left 4 Dead 2",
     r"E:\SteamLibrary\steamapps\common\Left 4 Dead 2",
     r"G:\SteamLibrary\steamapps\common\Left 4 Dead 2",
-    r"H:\SteamLibrary\steamapps\common\Left 4 Dead 2"
+    r"H:\SteamLibrary\steamapps\common\Left 4 Dead 2",
 ]
 
 print("Checking for location_check.txt files...")
@@ -24,11 +24,13 @@ test_location_ids = [
     69420015,  # Dead Center - Atrium Finale(Nick)
 ]
 
+
 def write_test_location(location_id):
     """Write a test location check file"""
-    with open("location_check.txt", 'w') as f:
+    with open("location_check.txt", "w") as f:
         f.write(str(location_id))
     print(f"Wrote test location check: {location_id}")
+
 
 print("Available test commands:")
 print("1-4: Send Dead Center finale location checks")
@@ -38,17 +40,26 @@ while True:
     found_files = []
     for l4d2_path in L4D2_PATHS:
         if os.path.exists(l4d2_path):
-            location_file = os.path.join(l4d2_path, "left4dead2", "addons", "sourcemod", "data", "archipelago", "mod_data", "location_check.txt")
+            location_file = os.path.join(
+                l4d2_path,
+                "left4dead2",
+                "addons",
+                "sourcemod",
+                "data",
+                "archipelago",
+                "mod_data",
+                "location_check.txt",
+            )
             if os.path.exists(location_file):
                 try:
-                    with open(location_file, 'r') as f:
+                    with open(location_file, "r") as f:
                         content = f.read().strip()
                     found_files.append(f"{location_file}: {content}")
                 except Exception as e:
                     found_files.append(f"{location_file}: ERROR - {e}")
 
     if found_files:
-        print(f"Found location_check.txt files:")
+        print("Found location_check.txt files:")
         for file_info in found_files:
             print(f"  {file_info}")
     else:
@@ -56,14 +67,18 @@ while True:
 
     # Check for user input
     try:
-        user_input = input("Enter command (1-4 for test locations, q to quit): ").strip().lower()
-        if user_input == 'q':
+        user_input = (
+            input("Enter command (1-4 for test locations, q to quit): ").strip().lower()
+        )
+        if user_input == "q":
             break
-        elif user_input in ['1', '2', '3', '4']:
+        elif user_input in ["1", "2", "3", "4"]:
             index = int(user_input) - 1
             if index < len(test_location_ids):
                 write_test_location(test_location_ids[index])
-                print(f"Sent test location check for Dead Center finale (survivor {user_input})")
+                print(
+                    f"Sent test location check for Dead Center finale (survivor {user_input})"
+                )
             else:
                 print("Invalid location index")
         else:

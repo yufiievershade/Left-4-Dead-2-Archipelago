@@ -1,20 +1,24 @@
 from typing import List, Dict, Any
 from dataclasses import dataclass
-from Options import Choice, OptionGroup, Toggle, Range, PerGameCommonOptions
+from Options import Choice, Toggle, Range, PerGameCommonOptions
+
 
 class L4D2DeathLink(Toggle):
     """
     If enabled, when a player in the multiworld dies, everyone else dies.
     A Left 4 Dead 2-style team wipe.
     """
+
     display_name = "DeathLink"
     default = False
+
 
 class StartWithCampaign(Choice):
     """
     Determines which campaign is unlocked from the start.
     This does not change the starting map, but which campaign is logically available.
     """
+
     display_name = "Start with Campaign"
     option_dead_center = 1
     option_the_passing = 2
@@ -32,30 +36,37 @@ class StartWithCampaign(Choice):
     option_cold_stream = 14
     default = option_dead_center
 
+
 class AllCampaignsStart(Toggle):
     """
     Start with all campaigns unlocked. Overrides 'Start with Campaign'.
     """
+
     display_name = "All Campaigns Unlocked at Start"
     default = False
+
 
 class L4D2Goal(Range):
     """
     Number of campaigns required to complete the game.
     """
+
     display_name = "Campaigns to Complete"
     range_start = 1
     range_end = 14
     default = 3
 
+
 class TrapItemCount(Range):
     """
     Number of trap items to add to the item pool.
     """
+
     display_name = "Trap Items in Pool"
     range_start = 0
     range_end = 20
     default = 5
+
 
 @dataclass
 class L4D2Options(PerGameCommonOptions):
