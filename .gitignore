@@ -196,3 +196,7 @@ _speedups.html
 .LSOverride
 Thumbs.db
 [Dd]esktop.ini
+
+# Log files
+error.log
+*.log

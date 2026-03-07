@@ -1,7 +1,7 @@
 # APWorld Dev FAQ
 
 This document is meant as a reference tool to show solutions to common problems when developing an apworld.
-It is not intended to answer every question about Archipelago and it assumes you have read the other docs, 
+It is not intended to answer every question about Archipelago and it assumes you have read the other docs,
 including [Contributing](contributing.md), [Adding Games](<adding games.md>), and [World API](<world api.md>).
 
 ---
@@ -11,14 +11,16 @@ including [Contributing](contributing.md), [Adding Games](<adding games.md>), an
 A "restrictive start" here means having a combination of very few sphere 1 locations and potentially requiring more
 than one item to get a player to sphere 2.
 
-One way to fix this is to hint to the Generator that an item needs to be in sphere one with local_early_items. 
+One way to fix this is to hint to the Generator that an item needs to be in sphere one with local_early_items.
 Here, `1` represents the number of "Sword" items the Generator will attempt to place in sphere one.
+
 ```py
 early_item_name = "Sword"
 self.multiworld.local_early_items[self.player][early_item_name] = 1
 ```
 
 Some alternative ways to try to fix this problem are:
+
 * Add more locations to sphere one of your world, potentially only when there would be a restrictive start
 * Pre-place items yourself, such as during `create_items`
 * Put items into the player's starting inventory using `push_precollected`
@@ -37,6 +39,7 @@ itempool by comparing [get_unfilled_locations](https://github.com/ArchipelagoMW/
 to your list of items to submit
 
 Note: to use self.create_filler(), self.get_filler_item_name() should be defined to only return valid filler item names
+
 ```py
 total_locations = len(self.multiworld.get_unfilled_locations(self.player))
 item_pool = self.create_non_filler_items()
@@ -49,6 +52,7 @@ self.multiworld.itempool += item_pool
 
 A faster alternative to the `for` loop would be to use a
 [list comprehension](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions):
+
 ```py
 item_pool += [self.create_filler() for _ in range(total_locations - len(item_pool))]
 ```
@@ -67,6 +71,7 @@ the queue until there is nothing more to check.
 
 For performance reasons, AP only checks every entrance once. However, if an entrance's access_rule depends on region
 access, then the following may happen:
+
 1. The entrance is checked and determined to be nontraversable because the region in its access_rule hasn't been
    reached yet during the graph search.
 2. Then, the region in its access_rule is determined to be reachable.
@@ -105,6 +110,7 @@ be able to load that custom class to decompress the data, which can fail either 
 (because it cannot load your world module) or the class it's attempting to import to decompress is deemed unsafe.
 
 Common situations where this can happen include:
+
 * Using Option instances directly in slot_data. Ex: using `options.option_name` instead of `options.option_name.value`.
   Also, consider using the `options.as_dict("option_name", "option_two")` helper.
 * Using enums as Location/Item names in the datapackage. When building out `location_name_to_id` and `item_name_to_id`,
@@ -117,9 +123,9 @@ Common situations where this can happen include:
 Sometimes the game can be modded to skip these locations or make them less tedious. But when this issue is due to a fundamental aspect of the game, then the general answer is "soft logic" (and its subtypes like "combat logic", "money logic", etc.). For example: you can logically require that a player have several helpful items before fighting the final boss, even if a skilled player technically needs no items to beat it. Randomizer logic should describe what's *fun* rather than what's technically possible.
 
 Concrete examples of soft logic include:
-- Defeating a boss might logically require health upgrades, damage upgrades, certain weapons, etc. that aren't strictly necessary.
-- Entering a high-level area might logically require access to enough other parts of the game that checking other locations should naturally get the player to the soft-required level.
-- Buying expensive shop items might logically require access to a place where you can quickly farm money, or logically require access to enough parts of the game that checking other locations should naturally generate enough money without grinding.
+* Defeating a boss might logically require health upgrades, damage upgrades, certain weapons, etc. that aren't strictly necessary.
+* Entering a high-level area might logically require access to enough other parts of the game that checking other locations should naturally get the player to the soft-required level.
+* Buying expensive shop items might logically require access to a place where you can quickly farm money, or logically require access to enough parts of the game that checking other locations should naturally generate enough money without grinding.
 
 Remember that all items referenced by logic (however hard or soft) must be `progression`. Since you typically don't want to turn a ton of `filler` items into `progression` just for this, it's common to e.g. write money logic using only the rare "$100" item, so the dozens of "$1" and "$10" items in your world can remain `filler`.
 
@@ -127,16 +133,16 @@ Remember that all items referenced by logic (however hard or soft) must be `prog
 
 ### What if my game has "missable" or "one-time-only" locations or region connections?
 
-Archipelago logic assumes that once a region or location becomes reachable, it stays reachable forever, no matter what 
-the player does in-game. Slightly more formally: Receiving an AP item must never cause a region connection or location 
-to "go out of logic" (become unreachable when it was previously reachable), and receiving AP items is the only kind of 
+Archipelago logic assumes that once a region or location becomes reachable, it stays reachable forever, no matter what
+the player does in-game. Slightly more formally: Receiving an AP item must never cause a region connection or location
+to "go out of logic" (become unreachable when it was previously reachable), and receiving AP items is the only kind of
 state change that AP logic acknowledges. No other actions or events can change reachability.
 
 So when the game itself does not follow this assumption, the options are:
-- Modify the game to make that location/connection repeatable
-- If there are both missable and repeatable ways to check the location/traverse the connection, then write logic for 
+* Modify the game to make that location/connection repeatable
+* If there are both missable and repeatable ways to check the location/traverse the connection, then write logic for
   only the repeatable ways
-- Don't generate the missable location/connection at all
-  - For connections, any logical regions will still need to be reachable through other, *repeatable* connections
-  - For locations, this may require game changes to remove the vanilla item if it affects logic
-- Decide that resetting the save file is part of the game's logic, and warn players about that
+* Don't generate the missable location/connection at all
+  * For connections, any logical regions will still need to be reachable through other, *repeatable* connections
+  * For locations, this may require game changes to remove the vanilla item if it affects logic
+* Decide that resetting the save file is part of the game's logic, and warn players about that

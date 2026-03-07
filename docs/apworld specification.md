@@ -9,18 +9,17 @@ file into the worlds folder.
 
 **Warning:** apworlds have to be all lower case, otherwise they raise a bogus Exception when trying to import in frozen python 3.10+!
 
-
 ## File Format
 
 apworld files are zip archives, all lower case, with the file ending `.apworld`.
 The zip has to contain a folder with the same name as the zip, case-sensitive, that contains what would normally be in
 the world's folder in `worlds/`. I.e. `worlds/ror2.apworld` containing `ror2/__init__.py`.
 
-
 ## Metadata
 
 Metadata about the apworld is defined in an `archipelago.json` file inside the zip archive.
 The current format version has at minimum:
+
 ```json
 {
     "version": 6,
@@ -30,16 +29,15 @@ The current format version has at minimum:
 ```
 
 with the following optional version fields using the format `"1.0.0"` to represent major.minor.build:
+
 * `minimum_ap_version` and `maximum_ap_version` - which if present will each be compared against the current
   Archipelago version respectively to filter those files from being loaded
 * `world_version` - an arbitrary version for that world in order to only load the newest valid world.
   An apworld without a world_version is always treated as older than one with a version
 
-
 ## Extra Data
 
 The zip can contain arbitrary files in addition what was specified above.
-
 
 ## Caveats
 
