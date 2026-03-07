@@ -6,3 +6,18 @@ ThirdPartyProgramStuff/build/
 
 # L4D2 distribution/build outputs
 ThirdPartyProgramStuff/dist/
+
+# Companion app development artifacts
+l4d2_companion/.env
+l4d2_companion/build/
+l4d2_companion/dist/
+l4d2_companion/*.spec
+l4d2_companion/*.egg-info/
+l4d2_companion/__pycache__/
+l4d2_companion/.pytest_cache/
+l4d2_companion/.ruff_cache/
+l4d2_companion/*.log
+l4d2_companion/.coverage
+l4d2_companion/htmlcov/
+l4d2_companion/.mypy_cache/
+l4d2_companion/.tox/

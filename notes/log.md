@@ -10,6 +10,14 @@
 - [ ] Investigate the current state of our testing.
 - [ ] Figure out how to run this.
 - [ ] Produce a robust readme explaining how to get this world working on windows and linux.
+- [ ] Move to using uv with a pyproject.toml.
+- [ ] Rename `worlds/L4D2` to `worlds/l4d2`.
+
+### AP Companion
+
+- [x] Use pydantic basesettings for config.
+- [ ] Convert what we can into pydantic basemodels.
+- [x] Write a readme.
 
 ### From Yufii
 
