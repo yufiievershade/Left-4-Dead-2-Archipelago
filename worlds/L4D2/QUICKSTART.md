@@ -88,7 +88,3 @@ uv run l4d2-companion --cli --slot "YourSlotName" --host "archipelago.gg:12345"
 → Ensure L4D2 is running (not just Steam) and the companion shows "Connected"
 
 For more detailed help, see [l4d2_companion/README.md](l4d2_companion/README.md).
-
----
-
-**Ready to dive deeper?** See the [main README](../README.md) for detailed configuration options and developer information.

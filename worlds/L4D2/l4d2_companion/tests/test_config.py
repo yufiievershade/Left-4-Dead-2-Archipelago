@@ -5,7 +5,6 @@ Run with: uv run pytest
 
 from pathlib import Path
 
-from l4d2_companion.args import CommandLineArgs
 from l4d2_companion.config import APConfig, GameConfig, ap_config, game_config
 from l4d2_companion.definitions import (
     CAMPAIGN_NAMES,
@@ -125,40 +124,6 @@ class TestUtils:
         """Test get_resource_path handles relative paths correctly."""
         path = get_resource_path("mod_data/test.txt")
         assert "mod_data" in str(path)
-
-
-class TestCommandLineArgs:
-    """Test command line argument parsing."""
-
-    def test_parse_all_args(self):
-        """Test parsing all three arguments."""
-        args = ["script.py", "Player1", "archipelago.gg:12345", "password123"]
-        parsed = CommandLineArgs.from_sys_argv(args)
-        assert parsed.slot_name == "Player1"
-        assert parsed.server_address == "archipelago.gg:12345"
-        assert parsed.password == "password123"
-
-    def test_parse_minimal_args(self):
-        """Test parsing minimal arguments."""
-        args = ["script.py", "Player1", "server:12345"]
-        parsed = CommandLineArgs.from_sys_argv(args)
-        assert parsed.slot_name == "Player1"
-        assert parsed.server_address == "server:12345"
-        assert parsed.password == ""
-
-    def test_validate_valid_args(self):
-        """Test validation with valid arguments."""
-        args = CommandLineArgs(slot_name="Player", server_address="server:12345")
-        is_valid, error = args.is_valid()
-        assert is_valid
-        assert error == ""
-
-    def test_validate_missing_slot(self):
-        """Test validation with missing slot."""
-        args = CommandLineArgs(slot_name="", server_address="server:12345")
-        is_valid, error = args.is_valid()
-        assert not is_valid
-        assert "slot" in error.lower()
 
 
 class TestItemSpawnCommands:

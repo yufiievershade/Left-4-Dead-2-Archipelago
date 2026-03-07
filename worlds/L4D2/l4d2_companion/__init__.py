@@ -65,9 +65,6 @@ from l4d2_companion.models import (
     TrapSpawn,
 )
 
-# Args module exports
-from l4d2_companion.args import CommandLineArgs
-
 # Files module exports
 from l4d2_companion.files import FileOperationResult
 
@@ -119,8 +116,6 @@ __all__ = [
     "ThemeConfiguration",
     "WindowConfiguration",
     "ConnectionInfo",
-    # Args
-    "CommandLineArgs",
     # Files
     "FileOperationResult",
     # Paths
