@@ -210,7 +210,6 @@ l4d2_companion/
 │   ├── L4D2CompanionGUI       # Main GUI class
 │   ├── ThemeConfiguration     # Light/dark themes (BaseModel)
 │   └── WindowConfiguration    # Window settings (BaseModel)
-├── args.py              # Command-line argument parsing
 ├── files.py             # File I/O operations
 ├── paths.py             # Path utilities
 ├── main.py              # Click CLI entry point
