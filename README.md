@@ -1,6 +1,6 @@
 # Left 4 Dead 2 Archipelago WIP
 
-The Current Build is expected to have many bugs. Just in case I don't get the things I want down with traps, how weapons spawn, etc. Know that I probably know if a trap doesn't send at the moment. Weapon spawns are also high priority right now. They work, but can be varied with how they decide to spawn. Everything else should work(in theory). I've done thorough testing with each build with friends. More will be done before I feel satisfied with the state of the apworld. For now, opening it up to more eyes is giving me more access to potential problems that I might not know about.
+The Current Build is expected to have many bugs. Just in case I don't get the things I want down with traps, how weapons spawn, etc. Know that I probably know if a trap doesn't send at the moment. Weapon spawns are also high priority right now. They work, but can be varied with how they decide to spawn. Everything else should work(in theory). I've done thorough testing with each build with friends. More will be done before I feel satisfied with the state of the apworld. For now, opening it up to more eyes is giving me more access to potential problems that I might not know about. Just so people stop bringing it up. Death Link doesn't work yet. it is a placeholder
 
 Finally, I recommend testing it by itself without other games until Filler is added. Most of the filler right now is just duplicates of guns. It might not generate with other games because of the limited item amount
 
