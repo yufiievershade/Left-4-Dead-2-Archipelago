@@ -45,6 +45,7 @@ After you have installed all of the things above, be sure to download everything
 
 
 Any trouble you have with installation or anything otherwise, feel free to reach out to me on Bluesky, Discord, or Twitch @YufiiEvershade
+(just as a note though, I am not currently maintaining this apworld. I haven't worked on it since November of last year. I don't have any current plans to work on it until probably 7.0 of archipelago)
 
 
 
