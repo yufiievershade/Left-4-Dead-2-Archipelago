@@ -1,0 +1,106 @@
+{
+  "connected": true,
+  "player_name": "Player1",
+  "unlocked_campaigns": [
+    "Dead Air",
+    "Blood Harvest",
+    "Dead Center",
+    "Cold Stream"
+  ],
+  "locked_campaigns": [
+    "The Passing",
+    "Dark Carnival",
+    "Swamp Fever",
+    "Hard Rain",
+    "The Parish",
+    "No Mercy",
+    "Crash Course",
+    "Death Toll",
+    "The Sacrifice",
+    "The Last Stand"
+  ],
+  "unlocked_healing": [
+    "Defib",
+    "First Aid Kit"
+  ],
+  "locked_healing": [
+    "Pills",
+    "Adrenaline"
+  ],
+  "unlocked_weapon_upgrades": [],
+  "locked_weapon_upgrades": [
+    "Laser Sight",
+    "Incendiary",
+    "Explosive Ammo"
+  ],
+  "unlocked_t1_weapons": [
+    "Pump Shotgun"
+  ],
+  "locked_t1_weapons": [
+    "Chrome Shotgun",
+    "Submachine Gun",
+    "Silenced Submachine Gun",
+    "MP5"
+  ],
+  "unlocked_t2_weapons": [
+    "Scar-H",
+    "Sniper Rifle",
+    "Hunting Rifle"
+  ],
+  "locked_t2_weapons": [
+    "Tactical Shotgun",
+    "Combat Shotgun",
+    "M-16",
+    "AK-47",
+    "SG 552",
+    "Scout",
+    "AWP"
+  ],
+  "unlocked_heavy_weapons": [],
+  "locked_heavy_weapons": [
+    "Grenade Launcher",
+    "M60"
+  ],
+  "unlocked_grenades": [],
+  "locked_grenades": [
+    "Molotov",
+    "Pipe Bomb",
+    "Bile Bomb"
+  ],
+  "unlocked_melee": [
+    "Cricket Bat"
+  ],
+  "locked_melee": [
+    "Fireaxe",
+    "Baseball Bat",
+    "Crowbar",
+    "Frying Pan",
+    "Golf Club",
+    "Guitar",
+    "Katana",
+    "Machete",
+    "Nightstick",
+    "Pitchfork",
+    "Shovel",
+    "Knife",
+    "Chainsaw",
+    "Riot Shield"
+  ],
+  "unlocked_explosives": [
+    "Oxygen Tank"
+  ],
+  "locked_explosives": [
+    "Gas Can",
+    "Propane Tank",
+    "Fireworks"
+  ],
+  "unlocked_misc": [
+    "Magnum"
+  ],
+  "locked_misc": [
+    "P220 Pistol",
+    "Glock",
+    "Gnome Chompski"
+  ],
+  "last_updated": 1762587570
+}
