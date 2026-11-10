@@ -10,7 +10,7 @@ import random
 import threading
 import winreg
 import tkinter as tk
-from tkinter import ttk, scrolledtext, messagebox
+from tkinter import ttk, scrolledtext, messagebox, simpledialog
 
 DEBUG = False
 stop_event = threading.Event()
@@ -24,7 +24,7 @@ def get_resource_path(relative_path):
         base_path = os.path.abspath(".")
     return os.path.join(base_path, relative_path)
 
-def find_all_l4d2_paths():
+def find_all_l4d2_paths(use_gui=True):
     """Find all L4D2 installation paths"""
     found_paths = []
     
@@ -57,20 +57,18 @@ def find_all_l4d2_paths():
     
     if not found_paths:
         # Ask user if not found
-        print("Could not auto-detect L4D2 installation.")
         while True:
-            user_path = input("Please enter your L4D2 installation path (e.g., C:\\Program Files (x86)\\Steam\\steamapps\\common\\Left 4 Dead 2): ")
+            if use_gui:
+                user_path = gui_instance.get_nonstandard_l4d2_path()
+            else:
+                print("Could not auto-detect L4D2 installation.")
+                user_path = input("Please enter your L4D2 installation path (e.g., C:\\Program Files (x86)\\Steam\\steamapps\\common\\Left 4 Dead 2): ")
             if os.path.exists(user_path):
                 found_paths.append(user_path)
                 break
             print("Path not found. Please try again.")
     
     return found_paths
-
-# Auto-detect all L4D2 paths
-L4D2_PATHS = find_all_l4d2_paths()
-# print(f"Found L4D2 installations: {L4D2_PATHS}")
-L4D2_BASE_PATH = L4D2_PATHS[0]  # Use first one for status file
 
 # ===== GUI CLASS =====
 class L4D2CompanionGUI(tk.Tk):
@@ -293,6 +291,9 @@ class L4D2CompanionGUI(tk.Tk):
                 self.campaigns_text.insert(tk.END, f"✗ {campaign}\n", "locked")
         
         self.campaigns_text.config(state=tk.DISABLED)
+
+    def get_nonstandard_l4d2_path(self):
+        return simpledialog.askstring(title="L4D2 Path", prompt="Could not auto-detect L4D2 installation. Please input it manually (e.g. Q:\\SteamLibrary\\steamapps\\common\\Left 4 Dead 2")
 
 def log(message, tag=None):
     if gui_instance is not None:
@@ -1243,32 +1244,55 @@ if __name__ == "__main__":
         if len(sys.argv) > 3:
             gui.password_entry.insert(0, sys.argv[3])
         gui_instance = gui
+
+        # Auto-detect all L4D2 paths
+        L4D2_PATHS = find_all_l4d2_paths(True)
+        L4D2_BASE_PATH = L4D2_PATHS[0]  # Use first one for status file
         gui.log_message(f"Found L4D2 installations: {L4D2_PATHS}", "info")
+
         gui.mainloop()
+    elif not use_gui and len(sys.argv) == 2:
+        program_name = os.path.split(sys.argv[0])[1]
+        print(f"Usage: {program_name} --no-gui <L4D2 path> <slot_name> <server:port> <password>")
     else:
         mod_data_path = get_resource_path("mod_data")
         if not os.path.exists(mod_data_path):
             os.makedirs(mod_data_path)
 
+        # Get L4D2 path
+        L4D2_PATHS = []
+        if len(sys.argv) > 2:
+            L4D2_PATHS.append(sys.argv[2])
+            L4D2_BASE_PATH = sys.argv[2]
+        else:
+            L4D2_PATHS = find_all_l4d2_paths(False)
+            L4D2_BASE_PATH = L4D2_PATHS[0]  # Use first one for status file
+
         # Get slot name
-        if len(sys.argv) > 1:
-            player_name = sys.argv[1]
+        if len(sys.argv) > 3:
+            player_name = sys.argv[3]
         else:
             player_name = input("Enter your slot name: ")
         
         # Starting items will be initialized when connected to server
         
         # Get server address from user
-        if len(sys.argv) > 2:
-            server_address = sys.argv[2]
+        if len(sys.argv) > 4:
+            server_address = sys.argv[4]
         else:
             server_address = input("Enter server address (e.g. archipelago.gg:38281): ")
-        print(f"Connecting as: {player_name} to {server_address}")
+
+        # Get password from user
+        if len(sys.argv) > 5:
+            password = sys.argv[5]
+        else:
+            password = input("Enter password: ")
+        print(f"Connecting as: {player_name} to {server_address} with password={password}")
 
         update_status(player_name, False)
 
         try:
-            asyncio.run(connect_to_archipelago(server_address, player_name))
+            asyncio.run(connect_to_archipelago(server_address, player_name, password=password))
         except Exception as e:
             print(f"Script crashed: {e}")
             traceback.print_exc()
