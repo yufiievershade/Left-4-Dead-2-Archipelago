@@ -63,6 +63,9 @@ def find_all_l4d2_paths(use_gui=True):
             else:
                 print("Could not auto-detect L4D2 installation.")
                 user_path = input("Please enter your L4D2 installation path (e.g., C:\\Program Files (x86)\\Steam\\steamapps\\common\\Left 4 Dead 2): ")
+            if user_path is None:
+                # User has clicked "Cancel"
+                return None
             if os.path.exists(user_path):
                 found_paths.append(user_path)
                 break
@@ -1247,10 +1250,11 @@ if __name__ == "__main__":
 
         # Auto-detect all L4D2 paths
         L4D2_PATHS = find_all_l4d2_paths(True)
-        L4D2_BASE_PATH = L4D2_PATHS[0]  # Use first one for status file
-        gui.log_message(f"Found L4D2 installations: {L4D2_PATHS}", "info")
+        if L4D2_PATHS is not None:
+            L4D2_BASE_PATH = L4D2_PATHS[0]  # Use first one for status file
+            gui.log_message(f"Found L4D2 installations: {L4D2_PATHS}", "info")
 
-        gui.mainloop()
+            gui.mainloop()
     elif not use_gui and len(sys.argv) == 2:
         program_name = os.path.split(sys.argv[0])[1]
         print(f"Usage: {program_name} --no-gui <L4D2 path> <slot_name> <server:port> <password>")
